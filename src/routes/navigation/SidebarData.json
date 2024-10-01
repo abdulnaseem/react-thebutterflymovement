@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Home",
+        "path": "/",
+        "cName": "nav-text",
+        "id": 1
+    },
+    {
+        "title": "About",
+        "path": "/about",
+        "cName": "nav-text",
+        "id": 2
+    },
+    {
+        "title": "What We Provide",
+        "path": "/what-we-provide",
+        "cName": "nav-text",
+        "id": 3
+    },
+    {
+        "title": "Founder",
+        "path": "/founder",
+        "cName": "nav-text",
+        "id": 4
+    },
+    {
+        "title": "Brawlers Boxing",
+        "path": "/brawlers-boxing",
+        "cName": "nav-text",
+        "id": 5
+    },
+    {
+        "title": "The Grapple Hub",
+        "path": "/the-grapple-hub",
+        "cName": "nav-text",
+        "id": 6
+    },
+    {
+        "title": "Contact",
+        "path": "/contact",
+        "cName": "nav-text",
+        "id": 7
+    }
+]

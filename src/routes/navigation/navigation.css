@@ -1,0 +1,127 @@
+.navigation {
+    padding: 35px;
+    /* border-bottom: solid 1px black; */
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    z-index: 2;
+}
+
+.logo-container {
+    padding-right: 100px;
+}
+.logo {
+    font-size: 14px;
+    margin: -5px;
+    font-family: "Fascinate Inline", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.links-container {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#nav-text {
+    margin: 16px;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+.active {
+    color: #2c3e50;
+    /* background-color: #2c3e50; */
+    padding: 100% 8px 46px 8px;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 769px) {
+    
+    .navigation {
+        padding: 25px;
+    }
+
+    .logo-container {
+        margin-top: 15px;
+    }
+
+    .nav-menu {
+        background-color: #121213;
+        width: 250px;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        transition: 850ms;
+        z-index: 100;
+        cursor: default;
+    }
+      
+    .nav-menu.active {
+        right: 0;
+        transition: 250ms
+    }
+
+    .menu-bars {
+        padding: 10px;
+        padding-bottom: 30px;
+    }
+
+    .icon {
+        position: absolute;
+        right: 0;
+        color: white;
+        margin-right: 15px;
+    }
+      
+    .active {
+        padding: 0;
+    }
+
+    #nav-text {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 8px 0px 8px 16px;
+        list-style: none;
+        height: 60px;
+        color: white;
+        text-decoration: none!important;
+    }
+    
+    #nav-text a {
+        text-decoration: none!important;
+        color: #f5f5f5;
+        font-size: 18px;
+        width: 95%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 8px 0px 8px 16px;
+        border-radius: 4px;
+    }
+      
+    #nav-text.active {
+        background-color: #2c3e50;
+        border-radius: 5px;
+    }
+      
+    .nav-menu-items {
+        width: 100%;
+    }
+      
+    .navbar-toggle {
+        background-color: #121213;
+        margin-top: 23px;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+      
+}

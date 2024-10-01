@@ -1,0 +1,98 @@
+.contact-header {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.contact-text {
+    background-color: black;
+    opacity: 0.6;
+}
+
+.contact-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.sub-header {
+    padding: 5px;
+    padding-bottom: 20px;
+}
+
+.line {
+    margin: auto;
+}
+
+.section-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-top: 3rem;
+}
+
+.email, .mobile {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.email-icon, .mobile-icon {
+    background-color: gray;
+    color: white;
+    width: 50px;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.section-text {
+    margin-left: -40px;
+}
+
+@media screen and (max-width: 1154px) {
+    .section-text {
+        margin-left: -15px;
+    }
+}
+
+@media screen and (max-width: 961px) {
+    .section-text {
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .section-container {
+        display: block;
+    }
+
+    .email, .mobile {
+        display: grid;
+        grid-template-columns: 20% 70% 10%;
+    }
+
+    .mobile {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 644px) {
+    .contact-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .section-container {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 30px;
+    }
+
+    .email, .mobile {
+        display: block;
+    }
+
+    .contact-section-email, .contact-section-mobile {
+        margin-top: 10px;
+    }
+}

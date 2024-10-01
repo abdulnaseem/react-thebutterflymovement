@@ -1,0 +1,67 @@
+
+.founder-img {
+    width: 380px;
+}
+
+.founder-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.founder-text-box {
+    margin: 30px;
+}
+
+.founder-quote-section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.fouder-social-media-links {
+    margin-left: 30px;
+}
+
+/* .instagram {
+    border-radius: 10px;
+    padding: 5px;
+    width: 40px;
+}
+.instagram:hover {
+    
+} */
+
+.founded-projects-section {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.project-1, .project-2 {
+    margin: 20px;
+    padding: 50px;
+    cursor: pointer;
+}
+
+.project-1-title, .project-2-title {
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+}
+
+.grid-item-card.hover-none {
+    background-color: rgb(55 65 81);
+    color: white;
+}
+
+@media screen and (max-width: 545px) {
+    .founder-container {
+        display: block;
+    }
+
+    .founder-quote-section {
+        display: block;
+    }
+
+    .founded-projects-section {
+        display: block;
+    }
+}

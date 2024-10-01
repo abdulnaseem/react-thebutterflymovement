@@ -1,0 +1,19 @@
+.bb-section {
+    
+}
+
+.bb-inner-section {
+    margin-top: 20px;
+}
+
+.bb-logo {
+    width: 300px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.bb-sub-header {
+    margin-top: -40px;
+}
+

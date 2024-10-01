@@ -1,0 +1,94 @@
+.grid-container-about {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 2px 2px 29px 11px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item-butterfly-img {
+    width: auto;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.grid-item-text {
+    margin: 15px;
+    font-size: 16px;
+}
+
+.grid-item-butterfly-img.muhammad-ali {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+}
+
+.grid-card-header {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 1334px) {
+    .grid-item-text {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 989px) {
+    .grid-container-about {
+        display: block;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .grid-item-butterfly-img, .grid-item-butterfly-img.muhammad-ali {
+        width: 300px;
+        height: auto;
+        margin: auto;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .grid-item-text {
+        margin: 15px;
+        padding-bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .grid-container-about {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 589px) {
+    .grid-item-butterfly-img, .grid-item-butterfly-img.muhammad-ali {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .grid-container-about {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .grid-item-butterfly-img {
+        width: 100%;
+        height: auto;
+    }
+}
