@@ -80,6 +80,7 @@
       
     .active {
         padding: 0;
+        text-decoration: none;
     }
 
     #nav-text {
@@ -90,11 +91,9 @@
         list-style: none;
         height: 60px;
         color: white;
-        text-decoration: none!important;
     }
     
     #nav-text a {
-        text-decoration: none!important;
         color: #f5f5f5;
         font-size: 18px;
         width: 95%;
