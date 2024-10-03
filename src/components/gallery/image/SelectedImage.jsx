@@ -45,7 +45,7 @@ const SelectedImage = ({ imageUrl, previous, next, projectUrl }) => {
                 </div>
             </div>
             
-            <p className="image-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            {/* <p className="image-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
         </div>
     )
 }
