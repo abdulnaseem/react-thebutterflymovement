@@ -27,6 +27,7 @@ span::after {
   /* border: 1px solid red; */
   justify-content: center;
   align-items: center;
+  padding-bottom: 40px;
 }
 .grid-logo-image {
   margin: 20px;

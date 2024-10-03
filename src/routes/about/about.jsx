@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './about.css';
 import Butterfly from '../../assets/images/butterfly1.jpeg';
 import MuhammadAli from '../../assets/images/muhammad-ali.jpeg';
@@ -12,6 +13,8 @@ const About = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const navigate = useNavigate();
 
     const isMobile = useMediaQuery({ maxWidth: "989px" });
     
@@ -92,6 +95,10 @@ const About = () => {
         )
     }
 
+    const handleNavigate = () => {
+        navigate('/what-we-provide');
+    }
+
     return (
         <>
             <h1 className="about-title p-5 text-center text-6xl font-bold tracking-tight sm:text-6xl">About</h1>
@@ -121,7 +128,7 @@ const About = () => {
             <div className='bg-gray-200 text-center'>
                 <h2 className="grid-header-card p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl bg-gray-200">Values and Beliefs</h2>
                 <Card cardData={cardData} style="bg-gray-200" />
-                <Button className="mb-10 drop-shadow-sm text-3xl bg-white hover:bg-black hover:text-white">FLY</Button>
+                <Button onClick={handleNavigate} className="mb-10 drop-shadow-sm text-3xl bg-white hover:bg-black hover:text-white">FLY</Button>
             </div>
             
         </>

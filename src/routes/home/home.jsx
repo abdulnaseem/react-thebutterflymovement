@@ -81,7 +81,7 @@ const Home = () => {
                     <Button className="text-white ms-7 bg-gray-900 hover:drop-shadow-md" style="original" onClick={() => handleNavigate('/about')}>LEARN MORE</Button>
                 </div>
             </div>
-
+{/* 
             <h2 className="achievement-title pt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl drop-shadow-md text-center">Achievements</h2>
             <div class="grid-achievement-container">
                 {
@@ -95,7 +95,7 @@ const Home = () => {
                         )
                     })
                 }
-            </div>
+            </div> */}
         </>
     )
 }
