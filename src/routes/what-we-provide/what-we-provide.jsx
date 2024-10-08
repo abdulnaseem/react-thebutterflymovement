@@ -47,7 +47,7 @@ const WhatWeProvide = () => {
             </div>
 
             <div className='text-center bg-white mt-5'>
-                <Card cardData={cardData} itemDivStyle="drop-shadow-md" itemTextStyle="mt-4" />
+                <Card cardData={cardData} itemDivStyle="drop-shadow-md border-item" itemTextStyle="mt-4" />
             </div>
         </>
     )

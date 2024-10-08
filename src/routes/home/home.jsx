@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './home.css';
 import Background from '../../assets/images/boxing.jpg';
-import LogoImage from '../../assets/images/Logo-image.jpg';
+import LogoImage from '../../assets/images/logo.png';
 import { FaAward } from "react-icons/fa";
 import Button from '../../components/UI/button/button';
  
@@ -69,7 +69,7 @@ const Home = () => {
             </div>
 
             <div className='grid-container'>
-                <div className='grid-item'>
+                <div className='grid-item-1'>
                     <img className='grid-logo-image' src={LogoImage} alt="" />
                 </div>
                 
@@ -81,8 +81,8 @@ const Home = () => {
                     <Button className="text-white ms-7 bg-gray-900 hover:drop-shadow-md" style="original" onClick={() => handleNavigate('/about')}>LEARN MORE</Button>
                 </div>
             </div>
-{/* 
-            <h2 className="achievement-title pt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl drop-shadow-md text-center">Achievements</h2>
+
+            {/* <h2 className="achievement-title pt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl drop-shadow-md text-center">Achievements</h2>
             <div class="grid-achievement-container">
                 {
                     achievementText.map((achievement, index) => {

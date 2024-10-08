@@ -29,10 +29,14 @@ span::after {
   align-items: center;
   padding-bottom: 40px;
 }
+
+.grid-item-1 {
+  margin-top: 110px;
+}
 .grid-logo-image {
   margin: 20px;
   margin-left: 3rem;
-  width: 400px;
+  width: 460px;
   height: 400px;
 }
 .grid-header {
@@ -86,10 +90,15 @@ span::after {
 
   .grid-logo-image {
     margin: auto;
-    margin-top: 10px;
-    width: 300px;
+    margin-top: -50px;
+    width: 360px;
     height: 300px;
   }
+
+  .grid-item {
+    margin-top: -60px;
+  }
+
   .grid-header {
     margin-top: 15px;
   }

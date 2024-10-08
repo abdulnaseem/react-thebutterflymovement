@@ -15,6 +15,7 @@ const CardItem = ({
     console.log(iconClass)
     return (
         <div className={`grid-item-card ${itemDivStyle}`}>
+            <img src="" alt="" />
             <p className={`${iconClass} ${itemIconStyle}`}>{icon}</p>
             <h3 className={`grid-card-header ${itemHeaderStyle}`}>{header}</h3>
             <p className={`grid-card-text ${itemTextStyle} text-sm`}>{text}</p>

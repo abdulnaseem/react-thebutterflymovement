@@ -66,25 +66,7 @@ const Founder = () => {
         {
             id: 2,
             iconLetter: "",
-            header: "Community Sports Leadership, Level 1 and 2.",
-            text: ""
-        },
-        {
-            id: 3,
-            iconLetter: "",
-            header: "FGM Training.",
-            text: ""
-        },
-        {
-            id: 4,
-            iconLetter: "",
-            header: "Tower Hamlets Courses - How to be a Learning Mentor.",
-            text: ""
-        },
-        {
-            id: 5,
-            iconLetter: "",
-            header: "Young Minds - Self Harm.",
+            header: "Community Sports Leadership.",
             text: ""
         }
     ];
@@ -100,13 +82,19 @@ const Founder = () => {
             id: 1,
             iconLetter: "",
             header: "‘Makkah 2 Madinah’ (Walk)",
-            text: "One of five British Nationals to walk from Makkah 2 Madina."
+            text: "One of five British Nationals to walk from Makkah 2 Madina. A journey of 550km completed in 15 days."
         },
         {
             id: 2,
             iconLetter: "",
             header: "Boxing",
             text: "Amateur Boxing Association England, London Champion, and National Quarter Finalist 2009."
+        },
+        {
+            id: 3,
+            iconLetter: "",
+            header: "IBJJF European No Gi Champion",
+            text: "Ranked number #1 in Europe in the 61.5 blue belt division."
         }
     ];
 
@@ -149,8 +137,8 @@ const Founder = () => {
                             </ReactIcon> */}
 
                             <div class="link-icon-wrap link-icon-effect">
-                                <a href="#set-8" class="link-icon link-icon-social-media"><FaInstagram size={30} /></a>
-                                <a href="#set-8" class="link-icon link-icon-social-media"><FaLinkedin size={30} /></a>
+                                <a href="https://www.instagram.com/coach.h/" class="link-icon link-icon-social-media" target="_blank"><FaInstagram size={30} /></a>
+                                <a href="https://www.linkedin.com/in/abdulhannanm/" class="link-icon link-icon-social-media" target="_blank"><FaLinkedin size={30} /></a>
                             </div>
                         </div>
                         
@@ -179,6 +167,11 @@ const Founder = () => {
                     </div>
                 </div>
 
+                <div className='sporting-achievement'>
+                    <h2 className="sporting-achievement-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Sporting Achievements</h2>
+                    <Card cardData={sportAchData} itemDivStyle="hover-none drop-shadow-md" />
+                </div>
+
                 <div className='qualifications'>
                     <h2 className="qualifications-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Qualifications</h2>
                     <Card cardData={qualificationData} itemDivStyle="hover-none drop-shadow-md" />
@@ -187,11 +180,6 @@ const Founder = () => {
                 <div className='training'>
                     <h2 className="training-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Training</h2>
                     <Card cardData={trainingData} itemDivStyle="hover-none drop-shadow-md" />
-                </div>
-
-                <div className='sporting-achievement'>
-                    <h2 className="sporting-achievement-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Sporting Achievements</h2>
-                    <Card cardData={sportAchData} itemDivStyle="hover-none drop-shadow-md" />
                 </div>
 
             </div>
