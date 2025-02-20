@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import './founder.css';
 import Hannan from '../../assets/images/hanan.jpeg';
-import { FaInstagram } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaTrophy, FaGraduationCap, FaRunning } from "react-icons/fa";
 import Project1 from '../../assets/images/boxing-banner.jpg';
 import Project2 from '../../assets/images/tgh7.jpg';
 import { styled } from 'styled-components';
 import Card from '../../components/card/Card';
 import { Link } from 'react-router-dom';
+import SportingAchievements from '../../components/card/SportingAchievements';
+import SectionCard from '../../components/card/SectionCard';
 
 const Founder = () => {
 
@@ -29,73 +30,16 @@ const Founder = () => {
         backgroundSize: "cover",
     }
 
-    let qualificationData = [
-        {
-            id: 0,
-            iconLetter: "",
-            header: "Joint Negotiating Committee, Level 6 in Youth & Community Work.",
-            text: ""
-        },
-        {
-            id: 1,
-            iconLetter: "",
-            header: "BA in Youth & Community Work.",
-            text: ""
-        },
-        {
-            id: 2,
-            iconLetter: "",
-            header: "The Amateur Boxing Association of England- Boxing Assistant & Head Coach.",
-            text: ""
-        }
+    const qualificationData = [
+        { id: 0, icon: <FaGraduationCap size={30} />, title: "Joint Negotiating Committee, Level 6 in Youth & Community Work." },
+        { id: 1, icon: <FaGraduationCap size={30} />, title: "BA in Youth & Community Work." },
+        { id: 2, icon: <FaGraduationCap size={30} />, title: "The Amateur Boxing Association of England- Boxing Assistant & Head Coach." },
     ];
 
-    let trainingData = [
-        {
-            id: 0,
-            iconLetter: "",
-            header: "Advanced Safeguarding Children.",
-            text: ""
-        },
-        {
-            id: 1,
-            iconLetter: "",
-            header: "Behaviour Management & Gang Mediation.",
-            text: ""
-        },
-        {
-            id: 2,
-            iconLetter: "",
-            header: "Community Sports Leadership.",
-            text: ""
-        }
-    ];
-
-    let sportAchData = [
-        {
-            id: 0,
-            iconLetter: "",
-            header: "‘London 2 Makkah’ (Cycle Ride)",
-            text: "One of two first British nationals to cycle from London to Saudi Arabia, covering 5,000 Km through 13 countries in 56 days for charity."
-        },
-        {
-            id: 1,
-            iconLetter: "",
-            header: "‘Makkah 2 Madinah’ (Walk)",
-            text: "One of five British Nationals to walk from Makkah 2 Madina. A journey of 550km completed in 15 days."
-        },
-        {
-            id: 2,
-            iconLetter: "",
-            header: "Boxing",
-            text: "Amateur Boxing Association England, London Champion, and National Quarter Finalist 2009."
-        },
-        {
-            id: 3,
-            iconLetter: "",
-            header: "IBJJF European No Gi Champion",
-            text: "Ranked number #1 in Europe in the 61.5 blue belt division."
-        }
+    const trainingData = [
+        { id: 0, icon: <FaRunning size={30} />, title: "Advanced Safeguarding Children." },
+        { id: 1, icon: <FaRunning size={30} />, title: "Behaviour Management & Gang Mediation." },
+        { id: 2, icon: <FaRunning size={30} />, title: "Community Sports Leadership." },
     ];
 
     return (
@@ -132,10 +76,6 @@ const Founder = () => {
                         </div>
 
                         <div className='fouder-social-media-links'>
-                            {/* <ReactIcon>
-                                <FaInstagram size={30} />
-                            </ReactIcon> */}
-
                             <div class="link-icon-wrap link-icon-effect">
                                 <a href="https://www.instagram.com/coach.h/" class="link-icon link-icon-social-media" target="_blank"><FaInstagram size={30} /></a>
                                 <a href="https://www.linkedin.com/in/abdulhannanm/" class="link-icon link-icon-social-media" target="_blank"><FaLinkedin size={30} /></a>
@@ -167,19 +107,21 @@ const Founder = () => {
                     </div>
                 </div>
 
+                <h2 className="sporting-achievement-title p-5 mt-10 mb-10 text-center text-4xl font-bold tracking-tight sm:text-4xl">Achievements</h2>
+
                 <div className='sporting-achievement'>
-                    <h2 className="sporting-achievement-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Sporting Achievements</h2>
-                    <Card cardData={sportAchData} itemDivStyle="hover-none drop-shadow-md" />
+                    <SportingAchievements />
                 </div>
 
-                <div className='qualifications'>
-                    <h2 className="qualifications-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Qualifications</h2>
-                    <Card cardData={qualificationData} itemDivStyle="hover-none drop-shadow-md" />
+                <div className='qualifications mt-10'>
+                    {/* <h2 className="qualifications-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Qualifications</h2> */}
+                    {/* <Card cardData={qualificationData} itemDivStyle="hover-none drop-shadow-md" /> */}
+                    <SectionCard title="Qualifications" data={qualificationData} />
                 </div>
                 
-                <div className='training'>
-                    <h2 className="training-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Training</h2>
-                    <Card cardData={trainingData} itemDivStyle="hover-none drop-shadow-md" />
+                <div className='training mt-10 mb-10'>
+                    {/* <h2 className="training-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Training</h2> */}
+                    <SectionCard title="Training" data={trainingData} />
                 </div>
 
             </div>
@@ -189,21 +131,3 @@ const Founder = () => {
 }
 
 export default Founder;
-
-// const ReactIcon = styled.div`
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 10px;
-//     width: 40px;
-//     padding: 5px;
-//     background-color: rgb(148 163 184);
-//     color: white;
-//     text-align: center;
-//     transition: width 0.1s, height 0.1s;
-//     &:hover {
-//         cursor: pointer;
-//         width: 45px;
-//         height: 45px;
-//     }
-// `;
