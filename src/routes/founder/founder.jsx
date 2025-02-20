@@ -93,7 +93,7 @@ const Founder = () => {
                 <div className='founded-projects'>
                     <h2 className="about-title p-5 text-center text-4xl font-bold tracking-tight sm:text-4xl">Founded Projects</h2>
 
-                    <div className='founded-projects-section text-center'>
+                    <div className='founded-projects-section text-center px-4'>
                         <Link to="/brawlers-boxing">
                             <div className='project-1' style={project1Style}>
                                 <h2 className="project-1-title p-5 text-center text-2xl font-bold tracking-tight sm:text-2xl">Brawlers Boxing</h2>
