@@ -18,7 +18,7 @@ const CardItem = ({
             <img src="" alt="" />
             <p className={`${iconClass} ${itemIconStyle}`}>{icon}</p>
             <h3 className={`grid-card-header ${itemHeaderStyle}`}>{header}</h3>
-            <p className={`grid-card-text ${itemTextStyle} text-sm`}>{text}</p>
+            <p className={`grid-card-text ${itemTextStyle} text-[14px] text-gray-600`}>{text}</p>
         </div>
     )
 }

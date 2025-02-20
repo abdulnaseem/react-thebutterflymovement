@@ -31,6 +31,10 @@
         color: black;
         background: white;
     }
+
+    .grid-card-text {
+        color: white;
+    }
 }
 
 .grid-card-letter-icon {
@@ -42,6 +46,8 @@
     font-family: "Fascinate Inline", system-ui;
     font-weight: 400;
     font-style: normal;
+    margin: auto;
+    margin-bottom: 14px;
 }
 .grid-card-text {
     text-align: start;

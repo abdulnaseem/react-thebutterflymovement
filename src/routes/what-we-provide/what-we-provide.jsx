@@ -1,56 +1,55 @@
 import { useEffect } from 'react';
-import './what-we-provide.css';
 import HeaderImage from '../../assets/images/boxing-community.jpeg';
 import Card from '../../components/card/Card';
 
-
 const WhatWeProvide = () => {
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    let sectionHeader = {
-        width: "100%",
-        height: "50vh",
-        backgroundImage: `url(${HeaderImage})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-    }
-
-    let cardData = [
+    const cardData = [
         {
             id: 0,
-            iconLetter: "",
             header: "Saved by the Bell",
-            text: "Boxing is an amazing tool to engage young people support through counselling and mentoring through our sessions."
+            text: "Boxing is an amazing tool to engage young people through counselling and mentoring sessions."
         },
         {
             id: 1,
-            iconLetter: "",
             header: "Wise Workshops",
-            text: "We provide a combination of informal education through accredited AQA programmes, Gang awareness / better health and finally aspiration workshops."
+            text: "We provide informal education through accredited AQA programmes, gang awareness, better health initiatives, and aspiration workshops."
         },
         {
             id: 2,
-            iconLetter: "",
             header: "Personal Training/Group Sessions",
-            text: "Start your journey to better health today. We provide a mixture of Boxing, Brazilian Jiu Jitsu and Muay Thai. Your personal trainer will have a tailored approach towards your goal and ambitions whether it may be improving your cardio vascular fitness, muscular endurance, learning a new martial art or just improving your general health & well-being. Remember a journey of a thousand miles begins with a single step."
+            text: "Start your journey to better health today with a mix of Boxing, Brazilian Jiu Jitsu, and Muay Thai. Whether your goal is fitness, learning a martial art, or general well-being, we tailor our training to suit you."
         }
     ];
 
     return (
-        <>
-            <div className='what-we-provide-header' style={sectionHeader}>
-                <h1 className="what-we-provide-text p-5 text-6xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-md">What We Provide</h1>
+        <div className="w-full min-h-screen bg-gray-100">
+            {/* Header Section */}
+            <div className="relative h-[50vh] flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${HeaderImage})` }}>
+                <h1 className="text-white text-5xl md:text-6xl font-bold bg-black bg-opacity-60 px-6 py-3 rounded-lg shadow-lg">
+                    What We Provide
+                </h1>
             </div>
 
-            <div className='text-center bg-white mt-5'>
-                <Card cardData={cardData} itemDivStyle="drop-shadow-md border-item" itemTextStyle="mt-4" />
+            {/* Cards Section */}
+            <div className="container mx-auto px-4 py-12 text-center">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {cardData.map(({ id, header, text }) => (
+                        <div key={id} className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                            <div className="w-16 h-16 mx-auto flex items-center justify-center bg-gray-800 text-white text-2xl font-bold rounded-full mb-4">
+                                {header.charAt(0)}
+                            </div>
+                            <h2 className="text-2xl font-semibold mb-4">{header}</h2>
+                            <p className="text-gray-600">{text}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default WhatWeProvide;
