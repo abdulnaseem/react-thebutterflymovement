@@ -44,7 +44,7 @@ const Founder = () => {
 
     return (
         <>  
-            <div className='founder-header bg-gray-700 p-3'>
+            {/* <div className='founder-header bg-gray-700 p-3'>
                 
                 <h1 className="about-title p-5 text-white text-center text-6xl font-bold tracking-tight sm:text-6xl">Founder</h1>
 
@@ -85,6 +85,56 @@ const Founder = () => {
                     </div>
                 </div>
 
+            </div> */}
+
+            <div className='bg-gray-900 text-white py-10 px-5 sm:px-10 md:px-20 lg:px-40'>
+                <div className='text-center'>
+                    <h1 className="text-4xl sm:text-6xl font-bold tracking-tight">Founder</h1>
+                </div>
+
+                <div className='mt-10 flex flex-col md:flex-row items-center md:items-start gap-10'>
+                    {/* Founder Image */}
+                    <div className='w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg'>
+                        <img src={Hannan} alt="Abdul Hannan" className='w-full h-full object-cover' />
+                    </div>
+
+                    {/* Founder Details */}
+                    <div className='flex-1'>
+                        <div className='bg-gray-800 p-6 rounded-lg shadow-md'>
+                            <h2 className='text-2xl font-semibold'>Abdul Hannan</h2>
+                            <p className='text-sm text-gray-400'>aka <strong>Coach.H</strong></p>
+                            <p className='mt-4 text-gray-300'>
+                                A social mobilizer and a mixed martial artist from Tower Hamlets. Having grown up in challenging socio-economic conditions, he has dedicated his life to creating progressive change through education and exercise.
+                            </p>
+                        </div>
+
+                        {/* Quotes */}
+                        <div className='mt-6 space-y-4'>
+                            <div className='bg-gray-700 p-5 rounded-lg shadow-md'>
+                                <p className='italic text-gray-300'>
+                                    "The viewpoint that I embrace in life is with a deep understanding that youth and community work is not a 9-5 job but rather a way of life..."
+                                </p>
+                                <p className='mt-2 text-right text-gray-400'><strong>~ Coach.H</strong></p>
+                            </div>
+                            <div className='bg-gray-700 p-5 rounded-lg shadow-md'>
+                                <p className='italic text-gray-300'>
+                                    “The ability to empower an individual or a group can be best fostered through two streams, education and exercise.”
+                                </p>
+                                <p className='mt-2 text-right text-gray-400'><strong>~ Coach.H</strong></p>
+                            </div>
+                        </div>
+
+                        {/* Social Links */}
+                        <div className='mt-6 flex justify-center space-x-6'>
+                            <a href="https://www.instagram.com/coach.h/" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-white transition duration-300'>
+                                <FaInstagram size={30} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/abdulhannanm/" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-white transition duration-300'>
+                                <FaLinkedin size={30} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
