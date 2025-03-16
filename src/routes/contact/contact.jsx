@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './contact.css';
 import HeaderImage from '../../assets/images/jj-contact-header.jpg';
+import ContactForm from '../../components/ContactForm';
 
 
 const Contact = () => {
@@ -9,22 +10,22 @@ const Contact = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    let sectionHeader = {
-        width: "100%",
-        height: "40vh",
-        backgroundImage: `url(${HeaderImage})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-    }
+    // let sectionHeader = {
+    //     width: "100%",
+    //     height: "40vh",
+    //     backgroundImage: `url(${HeaderImage})`,
+    //     backgroundPosition: "center",
+    //     backgroundRepeat: "no-repeat",
+    //     backgroundSize: "cover",
+    // }
 
     return (
         <>
-            <div className='contact-header' style={sectionHeader}>
+            {/* <div className='contact-header' style={sectionHeader}>
                 <h1 className="contact-text p-5 text-6xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-md">Contact</h1>
-            </div>
+            </div> */}
 
-            <div className='contact-container'>
+            {/* <div className='contact-container'>
                 <h2 className="sub-header text-4xl font-bold tracking-tight sm:text-4xl">We'd love to hear from you.</h2>
                 <hr className='line' />
 
@@ -56,7 +57,10 @@ const Contact = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
+            
+
+            <ContactForm />
             
         </>
     )
