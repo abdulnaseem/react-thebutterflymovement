@@ -1,14 +1,34 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
 
-const GalleryItem = ({ id, url, setImageId, projectUrl }) => {
+const GalleryItem = ({ id, url, setImageId, projectUrl, onClick }) => {
+    const [isLoading, setIsLoading] = useState(true);
 
     return (
-        <Link to={`/brawlers-boxing/${id}`} onClick={() => setImageId(id, projectUrl)}>
-            <div className="gallery-image">
-                <img className="gallery-image-item" src={url} alt="" />
-            </div>
-        </Link>
-    )
-}
+        <div
+            onClick={() => onClick(id)}
+            className="block overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+        >
+            {/* Skeleton Loader */}
+            {isLoading && (
+                <div role="status" className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
+                    <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded-sm sm:w-96 dark:bg-gray-300">
+                        <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+                        </svg>
+                    </div>
+                </div>
+            )}
+
+            {/* Image */}
+            <img
+                src={url}
+                alt=""
+                className={`w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300 ${isLoading ? 'hidden' : 'block'}`}
+                onLoad={() => setIsLoading(false)}
+                onError={() => setIsLoading(false)}
+            />
+        </div>
+    );
+};
 
 export default GalleryItem;

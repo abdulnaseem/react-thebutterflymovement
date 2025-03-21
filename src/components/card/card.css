@@ -58,8 +58,18 @@
         display: block;
     }
     .grid-item-card {
-        width: 80%;
+        width: 90%;
         margin: auto;
         margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .grid-container-card {
+        padding: 0;
+    }
+
+    .grid-item-card {
+        width: 100%;
     }
 }

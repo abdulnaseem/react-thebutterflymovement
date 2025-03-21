@@ -1,21 +1,49 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Gallery from "../../components/gallery/Gallery";
+import Gallery from '../../components/gallery/Gallery';
 import DATA from '../../data/brawlers-boxing.json';
 import BBLogo from '../../assets/images/brawlers-boxing.jpeg';
+import SelectedImage from '../../components/gallery/image/SelectedImage';
 import './brawlers-boxing.css';
 
-const BrawlersBoxing = ({setImageId}) => {
-
-    const bbUrl = useLocation();
+const BrawlersBoxing = ({ setImageId }) => {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const handleImageClick = (id) => {
+        setSelectedImage(id);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
+    // Function to handle "previous" button click
+    const handlePrevious = () => {
+        setSelectedImage((prev) => {
+            const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+            const newIndex = currentIndex === 0 ? DATA.images.length - 1 : currentIndex - 1;
+            return DATA.images[newIndex].id;
+        });
+    };
+
+    // Function to handle "next" button click
+    const handleNext = () => {
+        setSelectedImage((prev) => {
+            const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+            const newIndex = currentIndex === DATA.images.length - 1 ? 0 : currentIndex + 1;
+            return DATA.images[newIndex].id;
+        });
+    };
+
+    console.log('Selected Image ID:', selectedImage);
+
     return (
         <>
-            {/* <h1 className="bb-title p-5 text-center text-6xl font-bold tracking-tight sm:text-6xl">Brawlers Boxing</h1> */}
             <div className="bb-section">
                 <div className="bb-inner-section">
                     <img className="bb-logo" src={BBLogo} alt="" />
@@ -25,11 +53,21 @@ const BrawlersBoxing = ({setImageId}) => {
             </div>
 
             <div className="brawlers-boxing-gallery text-center pb-8">
-                <Gallery data={DATA} setImageId={setImageId} projectUrl={bbUrl.pathname} />
+                <Gallery data={DATA} setImageId={setImageId} projectUrl={location.pathname} onImageClick={handleImageClick} />
             </div>
-        </>
 
-    )
-}
+            {/* Render SelectedImage as a modal if an image is selected */}
+            {selectedImage !== null && (
+                <SelectedImage
+                    imageUrl={DATA.images.find((img) => img.id === selectedImage).url}
+                    previous={handlePrevious}
+                    next={handleNext}
+                    projectUrl={location.pathname}
+                    onClose={closeModal}
+                />
+            )}
+        </>
+    );
+};
 
 export default BrawlersBoxing;

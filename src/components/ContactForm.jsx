@@ -86,7 +86,7 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
+            Name<span className="text-red-600 font-bold">*</span>
           </label>
           <input
             type="text"
@@ -105,7 +105,7 @@ const ContactForm = () => {
 
         <div>
           <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-            Subject
+            Subject<span className="text-red-600 font-bold">*</span>
           </label>
           <input
             type="text"
@@ -124,7 +124,7 @@ const ContactForm = () => {
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
+            Email<span className="text-red-600 font-bold">*</span>
           </label>
           <input
             type="email"
@@ -143,7 +143,7 @@ const ContactForm = () => {
 
         <div>
           <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-700">
-            Contact Number
+            Contact Number<span className="text-red-600 font-bold">*</span>
           </label>
           <input
             type="tel"
@@ -162,7 +162,7 @@ const ContactForm = () => {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-            Message
+            Message<span className="text-red-600 font-bold">*</span>
           </label>
           <textarea
             id="message"

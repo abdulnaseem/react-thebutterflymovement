@@ -70,7 +70,7 @@ const About = () => {
     ];
 
     const handleNavigate = () => {
-        navigate('/what-we-provide');
+        navigate('/contact');
     }
 
     return (

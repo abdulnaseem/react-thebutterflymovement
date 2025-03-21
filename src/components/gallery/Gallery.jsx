@@ -1,40 +1,23 @@
 import { Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
 import GalleryItem from './GalleryItem';
-import { useLocation } from 'react-router-dom';
 
-const Gallery = ({data, setImageId, projectUrl}) => {
-
-    const navigate = useNavigate();
-
-    const handleNavigate = (id) => {
-        navigate(`${projectUrl}/${id}`);
-    }
-
-    const location = useLocation();
-
+const Gallery = ({ data, setImageId, projectUrl, onImageClick }) => {
     return (
-        <div>
-            {data.images.map((image, i) => {
-                console.log(data);
-
-                return (
-                    <Fragment key={i}>
-                            {
-                                location.pathName === `${projectUrl}/${image.id}` ?
-                                
-                                handleNavigate(image.id)
-
-                                :
-                                
-                                <GalleryItem key={i} id={image.id} url={image.url} setImageId={setImageId} projectUrl={projectUrl} />
-                            }
-                    </Fragment>
-                )
-            })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+            {data.images.map((image, i) => (
+                <Fragment key={i}>
+                    <GalleryItem
+                        key={i}
+                        id={image.id}
+                        url={image.url}
+                        setImageId={setImageId}
+                        projectUrl={projectUrl}
+                        onClick={() => onImageClick(image.id)} // Pass the onClick handler
+                    />
+                </Fragment>
+            ))}
         </div>
-    )
-
-}
+    );
+};
 
 export default Gallery;

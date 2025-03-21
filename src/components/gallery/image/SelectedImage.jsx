@@ -1,53 +1,85 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useSwipeable } from 'react-swipeable';
 
-const SelectedImage = ({ imageUrl, previous, next, projectUrl }) => {
-
+const SelectedImage = ({ imageUrl, previous, next, onClose }) => {
+    const [direction, setDirection] = useState(0);
     const navigate = useNavigate();
 
-    let sectionStyle = {
-        position: "absolute",
-        top: "0",
-        right: "0",
-        bottom: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-        backgroundImage: `url(${imageUrl})`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundColor:"black"
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => handleNext(),
+        onSwipedRight: () => handlePrevious(),
+        preventScrollOnSwipe: true,
+        trackMouse: true,
+    });
+
+    const handlePrevious = () => {
+        setDirection(-1);
+        previous();
     };
-    
-    let arrowStyle = {
-        fontSize: "2.5rem",
-        color: "white",
+
+    const handleNext = () => {
+        setDirection(1);
+        next();
+    };
+
+    const variants = {
+        enter: (direction) => ({
+            x: direction > 0 ? "100%" : "-100%",
+            opacity: 0,
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction) => ({
+            x: direction < 0 ? "100%" : "-100%",
+            opacity: 0,
+        }),
     };
 
     return (
-        <div className="selected-image" style={sectionStyle}>
-            {/* <img src={Background} /> */}
-            <div className="close">
-                <button className='close-button' onClick={() => navigate(`${projectUrl}`)}>
-                    <i class="bi bi-x"
-                    style={arrowStyle}></i>
-                </button>
-            </div>
-            <div className="gallery-button">
-                
-                <div className="prev-next">
-                    <button className="previous" onClick={previous}>
-                        <i class="bi bi-chevron-left" style={arrowStyle}></i>
-                    </button>
-                    <button className="next" onClick={next}>
-                        <i class="bi bi-chevron-right" style={arrowStyle}></i>
-                    </button>
-                </div>
-            </div>
-            
-            {/* <p className="image-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+        <div {...swipeHandlers} className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+            {/* Close Button */}
+            <button
+                onClick={onClose}
+                className="absolute top-4 right-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
+            >
+                <i className="bi bi-x text-2xl"></i>
+            </button>
+
+            {/* Image with Animation */}
+            <AnimatePresence custom={direction} initial={false}>
+                <motion.img
+                    key={imageUrl}
+                    src={imageUrl}
+                    alt="Selected"
+                    className="max-w-full max-h-full object-contain"
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                />
+            </AnimatePresence>
+
+            {/* Navigation Buttons */}
+            <button
+                onClick={handlePrevious}
+                className="absolute left-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
+            >
+                <i className="bi bi-chevron-left text-2xl"></i>
+            </button>
+            <button
+                onClick={handleNext}
+                className="absolute right-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
+            >
+                <i className="bi bi-chevron-right text-2xl"></i>
+            </button>
         </div>
-    )
-}
+    );
+};
 
 export default SelectedImage;

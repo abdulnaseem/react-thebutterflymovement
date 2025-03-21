@@ -12,12 +12,6 @@
         "id": 2
     },
     {
-        "title": "What We Provide",
-        "path": "/what-we-provide",
-        "cName": "nav-text",
-        "id": 3
-    },
-    {
         "title": "Founder",
         "path": "/founder",
         "cName": "nav-text",

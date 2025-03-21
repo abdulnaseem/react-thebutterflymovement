@@ -1,35 +1,73 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Gallery from "../../components/gallery/Gallery";
 import DATA from '../../data/the-grapple-hub.json';
 import TGHLogo from '../../assets/images/tgh-logo.jpg';
+import SelectedImage from '../../components/gallery/image/SelectedImage';
 import './the-grapple-hub.css';
 
 const TheGrappleHub = ({setImageId}) => {
-
-    const tghUrl = useLocation();
+    const [selectedImage, setSelectedImage] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const handleImageClick = (id) => {
+        setSelectedImage(id);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
+    // Function to handle "previous" button click
+    const handlePrevious = () => {
+        setSelectedImage((prev) => {
+            const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+            const newIndex = currentIndex === 0 ? DATA.images.length - 1 : currentIndex - 1;
+            return DATA.images[newIndex].id;
+        });
+    };
+
+    // Function to handle "next" button click
+    const handleNext = () => {
+        setSelectedImage((prev) => {
+            const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+            const newIndex = currentIndex === DATA.images.length - 1 ? 0 : currentIndex + 1;
+            return DATA.images[newIndex].id;
+        });
+    };
+
+    console.log('Selected Image ID:', selectedImage);
+
     return (
         <>
-            {/* <h1 className="tgh-title p-5 text-center text-6xl font-bold tracking-tight sm:text-6xl">Brawlers Boxing</h1> */}
-            <div className="tgh-section">
-                <div className="tgh-inner-section">
-                    <img className="tgh-logo" src={TGHLogo} alt="" />
+            <div className="bb-section">
+                <div className="bb-inner-section">
+                    <img className="bb-logo" src={TGHLogo} alt="" />
                 </div>
-                <h3 className="tgh-sub-heading text-center text-2xl font-bold tracking-tight sm:text-2xl">Est 2022</h3>
-                <p className="p-10 tgh-text">The Grapple Hub was founded by Coach.H in 2022 after piloting the project for 2 years. This community project promotes the sport of Brazilian Jiu Jitsu and grappling in the heart of the East End, Tower Hamlets. It is a safe space for people to enjoy themselves, have fun and learn useful life skills with an aim to reduce the rates of delinquency and violent crimes in the area. The club follows the teachings of Bradley Hill, the youngest 2nd Degree Black Belt in United Kingdom. Coach Bradley Hill oversees the curriculum and Grading and having since open its doors, the club has gained a variety of medals and reputation.</p>
+                <h3 className="bb-sub-heading text-center text-2xl font-bold tracking-tight sm:text-2xl">Est 2013</h3>
+                <p className="p-10 bb-text">The love for sports inspired Coach. H to give back to the wider community and harbour community cohesion using his skills, knowledge and experience. Shortly after the London 2012 Olympics, Coach.H initiated and founded a community project called ‘Brawlers Boxing’. The project arose to tackle youth delinquency and promote physical participation & better health. The movement went on to transform many lives, and along the way, won the ‘Tower Hamlets Community Safety Awards’ by Metropolitan Police and ‘The English Asian Business Awards’ (finalist) by Lloyds Bank.</p>
             </div>
 
-            <div className="the-grapple-hub-gallery text-center pb-8">
-                <Gallery data={DATA} setImageId={setImageId} projectUrl={tghUrl.pathname} />
+            <div className="brawlers-boxing-gallery text-center pb-8">
+                <Gallery data={DATA} setImageId={setImageId} projectUrl={location.pathname} onImageClick={handleImageClick} />
             </div>
+
+            {/* Render SelectedImage as a modal if an image is selected */}
+            {selectedImage !== null && (
+                <SelectedImage
+                    imageUrl={DATA.images.find((img) => img.id === selectedImage).url}
+                    previous={handlePrevious}
+                    next={handleNext}
+                    projectUrl={location.pathname}
+                    onClose={closeModal}
+                />
+            )}
         </>
-
-    )
-}
+    );
+};
 
 export default TheGrappleHub;
