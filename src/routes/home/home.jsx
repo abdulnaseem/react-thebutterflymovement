@@ -32,21 +32,22 @@ const Home = () => {
             </section>
             
             {/* About Section */}
-            <section className="py-10 md:py-20 px-5 md:px-10 flex flex-col md:flex-row items-center text-center md:text-left">
-                <img src={LogoImage} alt="Logo" className="w-2/3 md:w-1/3 max-w-xs" />
+            <section className="py-10 md:py-20 px-5 md:px-10 flex flex-col md:flex-row items-center text-center md:text-left bg-[#111827] text-[#E5E7EB]">
+                <img src={LogoImage} alt="Logo" className="w-2/3 md:w-1/3 max-w-xs drop-shadow-lg" />
                 <div className="md:ml-10 mt-5 md:mt-0">
-                    <h2 className="text-3xl md:text-4xl font-bold">Small Movements, Big Change</h2>
-                    <p className="mt-4 text-base md:text-md">
-                        Inspired by the pioneers of the award-winning community interest club <b>Brawlers Boxing</b> and the recently founded 
-                        <b>The Grapple Hub</b>, <b>The Butterfly Movement</b> aims to provide an integrated approach to youth & community work 
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#FACC15]">Small Movements, Big Change</h2>
+                    <p className="mt-4 text-base md:text-md leading-relaxed">
+                        Inspired by the pioneers of the award-winning community interest club <b className="text-[#FACC15]">Brawlers Boxing</b> and the recently founded 
+                        <b className="text-[#FACC15]"> The Grapple Hub</b>, <b className="text-[#FACC15]">The Butterfly Movement</b> aims to provide an integrated approach to youth & community work 
                         through physical empowerment. This venture promises to bring a new wave of movement keeping the wider community, our clients, 
                         and beneficiaries in mind. We are a limited company with core community interest values; our founding members and team are 
                         all driven to bring about positive change. Here at The Butterfly Movement, we believe that small movements can bring about 
-                        huge changes, thus, we have made it our tagline: Small Movements, Big Change
+                        huge changes, thus, we have made it our tagline: <span className="text-[#FACC15] font-semibold">Small Movements, Big Change.</span>
                     </p>
-                    <Button className="mt-4 bg-gray-900 text-white hover:bg-gray-700" onClick={() => navigate('/about')}>Learn More</Button>
+                    <Button className="mt-4 bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 transition-all shadow-md px-6 py-2 rounded-md" onClick={() => navigate('/about')}>Learn More</Button>
                 </div>
             </section>
+
             
             {/* Programs Section */}
             {/* <section className="py-10 md:py-20 bg-gray-800 px-5 md:px-10 text-center">
