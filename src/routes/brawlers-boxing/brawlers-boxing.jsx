@@ -69,7 +69,7 @@ const BrawlersBoxing = ({ setImageId }) => {
                         Brawlers Boxing now offers new Saturday classes for young people:
                     </p>
                     <ul className="mb-4 list-disc list-inside text-left text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0">
-                        <li><strong>Clubs (Ages 5–10)</strong> – 12:45 PM & 1:45 PM</li>
+                        <li><strong>Cubs (Ages 5–10)</strong> – 12:45 PM & 1:45 PM</li>
                         <li><strong>Tigers (Ages 11–17)</strong> – 1:45 PM & 2:45 PM</li>
                     </ul>
                     <p className="mb-4 text-base sm:text-lg">
