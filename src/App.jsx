@@ -12,6 +12,7 @@ import BBDATA from './data/brawlers-boxing.json';
 import TGHDATA from './data/the-grapple-hub.json';
 import Image from './components/gallery/image/Image';
 import { useEffect, useState } from 'react';
+import PopupModal from './components/UI/modal/PopupModal';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
         <Navigation />
+        <PopupModal />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path="/about" element={<About />} />
