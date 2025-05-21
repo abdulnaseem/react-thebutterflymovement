@@ -26,7 +26,13 @@ const achievements = [
       id: 3,
       icon: Handshake,
       title: "IBJJF European No Gi Champion",
-      description: "Ranked number #1 in Europe in the 61.5 blue belt division."
+      description: "Ranked number #1 in Europe in the 61.5kg blue belt division (2023)."
+  },
+  {
+    id: 4,
+    icon: Handshake,
+    title: "British No Gi Champion",
+    description: "Ranked number #1 in Britain in the 67.5kg purple belt division (2024)."
   }
 ];
 
@@ -42,7 +48,15 @@ const SportingAchievements = () => {
           >
             <Cards className="shadow-lg rounded-2xl border border-gray-200 p-6">
               <CardHeader className="flex flex-row items-center gap-4">
-                <achievement.icon className="w-10 h-10 text-yellow-500" />
+              <achievement.icon
+                className={`w-10 h-10 ${
+                  achievement.id === 3
+                    ? "text-blue-500"
+                    : achievement.id === 4
+                    ? "text-purple-500"
+                    : "text-yellow-500"
+                }`}
+              />
                 <CardTitle>{achievement.title}</CardTitle>
               </CardHeader>
               <CardContent>
