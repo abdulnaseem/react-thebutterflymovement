@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaUsers, FaDumbbell, FaCalendarAlt, FaBell, FaChalkboardTeacher, FaUserFriends } from 'react-icons/fa';
 import Button from '../../components/UI/button/button';
 import Background from '../../assets/images/boxing.jpg';
@@ -20,6 +20,13 @@ const Home = () => {
                 <h1 className="text-4xl md:text-6xl font-bold drop-shadow-md relative">The Butterfly Movement - Health</h1>
                 <h2 className="text-2xl md:text-4xl mt-2 drop-shadow-md relative">Educate · Empower · Exercise</h2>
                 <p className="drop-shadow-md mt-3 md:px-[100px]">The Butterfly Movement offers an integrated approach to youth and community work through physical empowerment, bringing a fresh wave of movement that benefits clients, beneficiaries, and the wider community.</p>
+                <Link to="/brawlers-boxing" className="mt-6 max-w-md w-full" aria-label="View Brawlers Boxing class details">
+                    <div className="animate-pulse bg-white/80 text-black px-6 py-4 rounded-xl shadow-lg transition hover:shadow-xl hover:bg-white cursor-pointer">
+                        <h3 className="text-lg md:text-xl font-semibold">🥊 Brawlers Boxing – Saturdays</h3>
+                        <p className="mt-2 text-sm md:text-base"><strong>12:45pm – 1:45pm</strong> — Ages 5–10</p>
+                        <p className="text-sm md:text-base"><strong>1:45pm – 2:45pm</strong> — Ages 11–17</p>
+                    </div>
+                </Link>
                 <Button
                     className="mt-5 bg-white text-black hover:bg-gray-300 relative"
                     onClick={(e) => {

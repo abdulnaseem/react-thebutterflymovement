@@ -27,7 +27,7 @@ function App() {
   return (
     <>
         <Navigation />
-        <PopupModal />
+        {/* <PopupModal /> */}
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path="/about" element={<About />} />
