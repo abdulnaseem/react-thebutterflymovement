@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import CoachHistoryTimeline, { coachHTimelineData } from '../../components/timeline/CoachHistoryTimeline';
 import './founder.css';
 import Hannan from '../../assets/images/hanan.jpeg';
 import { FaInstagram, FaLinkedin, FaTrophy, FaGraduationCap, FaRunning } from "react-icons/fa";
@@ -87,56 +88,96 @@ const Founder = () => {
 
             </div> */}
 
-            <div className='bg-gray-900 text-white py-10 px-5 sm:px-10 md:px-20 lg:px-40'>
-                <div className='text-center'>
-                    <h1 className="text-4xl sm:text-6xl font-bold tracking-tight">Founder</h1>
+            {/* Founder section */}
+            <div className="relative bg-[#0e1015] text-[#f5f0e5] py-10 px-5 sm:px-10 md:px-20 lg:px-40">
+            {/* subtle spotlight */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(245,180,0,0.18),_transparent_55%)]" />
+
+            <div className="relative max-w-5xl mx-auto">
+                <div className="text-center md:text-left">
+                <div className="h-1 w-12 bg-[#f5b400] mx-auto md:mx-0 mb-3 rounded-full" />
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                    Founder
+                </h1>
                 </div>
 
-                <div className='mt-10 flex flex-col md:flex-row items-center md:items-start gap-10'>
-                    {/* Founder Image */}
-                    <div className='w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg'>
-                        <img src={Hannan} alt="Abdul Hannan" className='w-full h-full object-cover' />
+                <div className="mt-10 flex flex-col md:flex-row items-center md:items-start gap-10">
+                {/* Founder Image */}
+                <div className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden shadow-2xl border-4 border-[#1b1d22] bg-[#181a1f]">
+                    <img
+                    src={Hannan}
+                    alt="Abdul Hannan"
+                    className="w-full h-full object-cover"
+                    />
+                </div>
+
+                {/* Founder Details */}
+                <div className="flex-1">
+                    {/* Main Card */}
+                    <div className="bg-[#181a1f] text-[#f5f0e5] p-6 rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.55)] border border-[#1b1d22]">
+                    <h2 className="text-2xl font-semibold">Abdul Hannan</h2>
+                    <p className="text-sm text-slate-300">
+                        aka <strong>Coach.H</strong>
+                    </p>
+                    <p className="mt-4 text-slate-100/90 leading-relaxed">
+                        A social mobilizer and a mixed martial artist from Shadwell, Tower
+                        Hamlets. Having grown up in challenging socio-economic conditions,
+                        he has dedicated his life to creating progressive change through
+                        education and exercise.
+                    </p>
                     </div>
 
-                    {/* Founder Details */}
-                    <div className='flex-1'>
-                        <div className='bg-gray-800 p-6 rounded-lg shadow-md'>
-                            <h2 className='text-2xl font-semibold'>Abdul Hannan</h2>
-                            <p className='text-sm text-gray-400'>aka <strong>Coach.H</strong></p>
-                            <p className='mt-4 text-gray-300'>
-                                A social mobilizer and a mixed martial artist from Tower Hamlets. Having grown up in challenging socio-economic conditions, he has dedicated his life to creating progressive change through education and exercise.
-                            </p>
-                        </div>
-
-                        {/* Quotes */}
-                        <div className='mt-6 space-y-4'>
-                            <div className='bg-gray-700 p-5 rounded-lg shadow-md'>
-                                <p className='italic text-gray-300'>
-                                    "The viewpoint that I embrace in life is with a deep understanding that youth and community work is not a 9-5 job but rather a way of life..."
-                                </p>
-                                <p className='mt-2 text-right text-gray-400'><strong>~ Coach.H</strong></p>
-                            </div>
-                            <div className='bg-gray-700 p-5 rounded-lg shadow-md'>
-                                <p className='italic text-gray-300'>
-                                    “The ability to empower an individual or a group can be best fostered through two streams, education and exercise.”
-                                </p>
-                                <p className='mt-2 text-right text-gray-400'><strong>~ Coach.H</strong></p>
-                            </div>
-                        </div>
-
-                        {/* Social Links */}
-                        <div className='mt-6 flex justify-center space-x-6'>
-                            <a href="https://www.instagram.com/coach.h/" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-white transition duration-300'>
-                                <FaInstagram size={30} />
-                            </a>
-                            <a href="https://www.linkedin.com/in/abdulhannanm/" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-white transition duration-300'>
-                                <FaLinkedin size={30} />
-                            </a>
-                        </div>
+                    {/* Quotes */}
+                    <div className="mt-6 space-y-4">
+                    <div className="bg-[#1b1d22] text-slate-100/85 p-5 rounded-xl shadow-md border border-[#101218]">
+                        <p className="italic">
+                        "The viewpoint that I embrace in life is with a deep understanding
+                        that youth and community work is not a 9-5 job but rather a way
+                        of life..."
+                        </p>
+                        <p className="mt-2 text-right text-[#f5b400] text-sm">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#f5b400] mr-2 align-middle" />
+                        <strong>Coach.H</strong>
+                        </p>
                     </div>
+
+                    <div className="bg-[#1b1d22] text-slate-100/85 p-5 rounded-xl shadow-md border border-[#101218]">
+                        <p className="italic">
+                        “The ability to empower an individual or a group can be best
+                        fostered through two streams, education and exercise.”
+                        </p>
+                        <p className="mt-2 text-right text-[#f5b400] text-sm">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#f5b400] mr-2 align-middle" />
+                        <strong>Coach.H</strong>
+                        </p>
+                    </div>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="mt-6 flex justify-center md:justify-start space-x-6">
+                    <a
+                        href="https://www.instagram.com/coach.h/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-300 hover:text-[#f5b400] transition duration-200"
+                    >
+                        <FaInstagram size={26} />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/abdulhannanm/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-300 hover:text-[#f5b400] transition duration-200"
+                    >
+                        <FaLinkedin size={26} />
+                    </a>
+                    </div>
+                </div>
                 </div>
             </div>
+            </div>
 
+            <CoachHistoryTimeline items={coachHTimelineData} />
 
             <div className='achievements-section'>
                 
