@@ -1,85 +1,89 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 
 const SelectedImage = ({ imageUrl, previous, next, onClose }) => {
-    const [direction, setDirection] = useState(0);
-    const navigate = useNavigate();
+  const [direction, setDirection] = useState(0);
 
-    const swipeHandlers = useSwipeable({
-        onSwipedLeft: () => handleNext(),
-        onSwipedRight: () => handlePrevious(),
-        preventScrollOnSwipe: true,
-        trackMouse: true,
-    });
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrevious(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
-    const handlePrevious = () => {
-        setDirection(-1);
-        previous();
-    };
+  const handlePrevious = () => {
+    setDirection(-1);
+    previous();
+  };
 
-    const handleNext = () => {
-        setDirection(1);
-        next();
-    };
+  const handleNext = () => {
+    setDirection(1);
+    next();
+  };
 
-    const variants = {
-        enter: (direction) => ({
-            x: direction > 0 ? "100%" : "-100%",
-            opacity: 0,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-        },
-        exit: (direction) => ({
-            x: direction < 0 ? "100%" : "-100%",
-            opacity: 0,
-        }),
-    };
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+  };
 
-    return (
-        <div {...swipeHandlers} className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-            {/* Close Button */}
-            <button
-                onClick={onClose}
-                className="absolute top-4 right-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
-            >
-                <i className="bi bi-x text-2xl"></i>
-            </button>
+  return (
+    <div
+      {...swipeHandlers}
+      className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+    >
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-[#181a1f] text-[#f5f0e5] hover:bg-[#252732] transition-colors text-xl"
+        aria-label="Close"
+      >
+        ×
+      </button>
 
-            {/* Image with Animation */}
-            <AnimatePresence custom={direction} initial={false}>
-                <motion.img
-                    key={imageUrl}
-                    src={imageUrl}
-                    alt="Selected"
-                    className="max-w-full max-h-full object-contain"
-                    custom={direction}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
-            </AnimatePresence>
+      {/* Image */}
+      <AnimatePresence custom={direction} initial={false}>
+        <motion.img
+          key={imageUrl}
+          src={imageUrl}
+          alt="Selected"
+          className="max-w-[92vw] max-h-[80vh] object-contain rounded-lg shadow-2xl border border-[#1b1d22]"
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+        />
+      </AnimatePresence>
 
-            {/* Navigation Buttons */}
-            <button
-                onClick={handlePrevious}
-                className="absolute left-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
-            >
-                <i className="bi bi-chevron-left text-2xl"></i>
-            </button>
-            <button
-                onClick={handleNext}
-                className="absolute right-4 bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600 transition-colors duration-200"
-            >
-                <i className="bi bi-chevron-right text-2xl"></i>
-            </button>
-        </div>
-    );
+      {/* Previous / Next */}
+      <button
+        onClick={handlePrevious}
+        className="absolute left-4 sm:left-6 w-10 h-10 flex items-center justify-center rounded-full bg-[#181a1f] text-[#f5f0e5] hover:bg-[#252732] transition-colors text-2xl"
+        aria-label="Previous image"
+      >
+        ‹
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute right-4 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full bg-[#181a1f] text-[#f5f0e5] hover:bg-[#252732] transition-colors text-2xl"
+        aria-label="Next image"
+      >
+        ›
+      </button>
+    </div>
+  );
 };
 
 export default SelectedImage;

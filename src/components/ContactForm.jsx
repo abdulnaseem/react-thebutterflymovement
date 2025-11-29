@@ -1,38 +1,63 @@
 import React, { useState } from "react";
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    subject: "",
-    email: "",
-    contactNumber: "",
-    message: "",
-  });
+const initialState = {
+  name: "",
+  subject: "",
+  email: "",
+  contactNumber: "",
+  message: "",
+};
 
+const ContactForm = () => {
+  const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    // Trim only visually on submit; while typing we keep raw value.
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
+    const trimmed = {
+      name: formData.name.trim(),
+      subject: formData.subject.trim(),
+      email: formData.email.trim(),
+      contactNumber: formData.contactNumber.replace(/\s+/g, ""),
+      message: formData.message.trim(),
+    };
+
     const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required";
-    if (!formData.subject) newErrors.subject = "Subject is required";
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+
+    if (!trimmed.name) newErrors.name = "Name is required.";
+    if (!trimmed.subject) newErrors.subject = "Subject is required.";
+    if (!trimmed.email) {
+      newErrors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(trimmed.email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
-    if (!formData.contactNumber) {
-      newErrors.contactNumber = "Contact number is required";
-    } else if (!/^\d{11}$/.test(formData.contactNumber)) {
-      newErrors.contactNumber = "Contact number must be 11 digits";
+
+    if (!trimmed.contactNumber) {
+      newErrors.contactNumber = "Contact number is required.";
+    } else if (!/^\d{10,15}$/.test(trimmed.contactNumber)) {
+      newErrors.contactNumber = "Contact number should contain 10–15 digits.";
     }
-    if (!formData.message) newErrors.message = "Message is required";
+
+    if (!trimmed.message) newErrors.message = "Message is required.";
+
     setErrors(newErrors);
+
+    // if valid, also normalise state
+    if (Object.keys(newErrors).length === 0) {
+      setFormData((prev) => ({
+        ...prev,
+        ...trimmed,
+        contactNumber: trimmed.contactNumber,
+      }));
+    }
+
     return Object.keys(newErrors).length === 0;
   };
 
@@ -49,23 +74,24 @@ const ContactForm = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify(formData),
+          // CSRF and additional validation should be enforced server-side.
         }
       );
 
       if (response.ok) {
         alert("Thank you for contacting us! We'll get back to you soon.");
-        setFormData({
-          name: "",
-          subject: "",
-          email: "",
-          contactNumber: "",
-          message: "",
-        });
+        setFormData(initialState);
+        setErrors({});
       } else {
-        const errorData = await response.json();
-        alert(`Failed to send the message: ${errorData.message || "Please try again."}`);
+        const errorData = await response.json().catch(() => ({}));
+        alert(
+          `Failed to send the message: ${
+            errorData.message || "Please try again."
+          }`
+        );
       }
     } catch (error) {
       console.error("Error:", error);
@@ -76,36 +102,71 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
-        Contact Us
-      </h1>
-      <p className="text-center text-gray-600 mb-8">
-        Have questions or want to join our community? Reach out to us!
-      </p>
-      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <section
+      aria-labelledby="contact-form-heading"
+      className="bg-[#fdfaf3] rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)] border border-[#e2d6bf] p-6 sm:p-8"
+    >
+      <div className="mb-6 text-center sm:text-left">
+        <h2
+          id="contact-form-heading"
+          className="mma-logo-font text-2xl sm:text-3xl font-bold tracking-wide text-[#0b0d10]"
+        >
+          Send us a message
+        </h2>
+        <p className="mt-2 text-sm sm:text-base text-slate-700">
+          Fill in the form below and we’ll reply as soon as possible.
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5"
+        noValidate
+        aria-describedby={
+          Object.keys(errors).length ? "form-error-summary" : undefined
+        }
+      >
+        {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name<span className="text-red-600 font-bold">*</span>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Name
+            <span className="text-red-600 font-bold ml-0.5">*</span>
           </label>
           <input
             type="text"
             id="name"
             name="name"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Enter your name"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="Enter your full name"
             required
           />
           {errors.name && (
-            <span className="text-sm text-red-500">{errors.name}</span>
+            <p
+              id="name-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.name}
+            </p>
           )}
         </div>
 
+        {/* Subject */}
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-            Subject<span className="text-red-600 font-bold">*</span>
+          <label
+            htmlFor="subject"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Subject
+            <span className="text-red-600 font-bold ml-0.5">*</span>
           </label>
           <input
             type="text"
@@ -113,81 +174,133 @@ const ContactForm = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="Enter the subject"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!errors.subject}
+            aria-describedby={errors.subject ? "subject-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="How can we help?"
             required
           />
           {errors.subject && (
-            <span className="text-sm text-red-500">{errors.subject}</span>
+            <p
+              id="subject-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.subject}
+            </p>
           )}
         </div>
 
+        {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email<span className="text-red-600 font-bold">*</span>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Email
+            <span className="text-red-600 font-bold ml-0.5">*</span>
           </label>
           <input
             type="email"
             id="email"
             name="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your email"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="name@example.com"
             required
           />
           {errors.email && (
-            <span className="text-sm text-red-500">{errors.email}</span>
+            <p
+              id="email-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.email}
+            </p>
           )}
         </div>
 
+        {/* Contact Number */}
         <div>
-          <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-700">
-            Contact Number<span className="text-red-600 font-bold">*</span>
+          <label
+            htmlFor="contactNumber"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Contact number
+            <span className="text-red-600 font-bold ml-0.5">*</span>
           </label>
           <input
             type="tel"
             id="contactNumber"
             name="contactNumber"
+            autoComplete="tel"
             value={formData.contactNumber}
             onChange={handleChange}
-            placeholder="Enter your contact number"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!errors.contactNumber}
+            aria-describedby={
+              errors.contactNumber ? "contactNumber-error" : undefined
+            }
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="Include country code if outside the UK"
             required
           />
           {errors.contactNumber && (
-            <span className="text-sm text-red-500">{errors.contactNumber}</span>
+            <p
+              id="contactNumber-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.contactNumber}
+            </p>
           )}
         </div>
 
+        {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-            Message<span className="text-red-600 font-bold">*</span>
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Message
+            <span className="text-red-600 font-bold ml-0.5">*</span>
           </label>
           <textarea
             id="message"
             name="message"
+            rows={5}
             value={formData.message}
             onChange={handleChange}
-            placeholder="Enter your message"
-            rows="5"
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400] resize-y"
+            placeholder="Tell us a little about your enquiry…"
             required
           />
           {errors.message && (
-            <span className="text-sm text-red-500">{errors.message}</span>
+            <p
+              id="message-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.message}
+            </p>
           )}
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400"
+          className="w-full inline-flex items-center justify-center rounded-full bg-[#0b0d10] px-6 py-2.5 text-sm sm:text-base font-semibold text-[#f5f0e5] hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:ring-offset-2 focus:ring-offset-[#fdfaf3] disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isLoading ? "Sending..." : "Send Message"}
+          {isLoading ? "Sending…" : "Send message"}
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

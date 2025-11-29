@@ -1,3 +1,4 @@
+// src/components/gallery/image/Image.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SelectedImage from './SelectedImage';

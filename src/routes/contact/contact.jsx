@@ -1,69 +1,98 @@
-import { useEffect } from 'react';
-import './contact.css';
-import HeaderImage from '../../assets/images/jj-contact-header.jpg';
-import ContactForm from '../../components/ContactForm';
-
+import { useEffect } from "react";
+import HeaderImage from "../../assets/images/jj-contact-header.jpg";
+import ContactForm from "../../components/ContactForm";
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+  return (
+    <div className="bg-[#f5f0e5] text-[#0b0d10] min-h-screen">
+      {/* Hero */}
+      <section className="relative h-56 sm:h-64 md:h-72">
+        <img
+          src={HeaderImage}
+          alt="Contact The Butterfly Movement"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-    // let sectionHeader = {
-    //     width: "100%",
-    //     height: "40vh",
-    //     backgroundImage: `url(${HeaderImage})`,
-    //     backgroundPosition: "center",
-    //     backgroundRepeat: "no-repeat",
-    //     backgroundSize: "cover",
-    // }
+        <div className="relative h-full max-w-5xl mx-auto flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+          <h1 className="mma-logo-font text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f0e5] drop-shadow-lg">
+            Contact
+          </h1>
+          <p className="mt-3 max-w-xl text-sm sm:text-base text-slate-100/90">
+            Questions, collaborations, or ready to join the movement? Reach out
+            and we’ll get back to you as soon as we can.
+          </p>
+        </div>
+      </section>
 
-    return (
-        <>
-            {/* <div className='contact-header' style={sectionHeader}>
-                <h1 className="contact-text p-5 text-6xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-md">Contact</h1>
-            </div> */}
+      {/* Body */}
+      <main className="px-4 sm:px-6 lg:px-8 pb-16 -mt-10">
+        <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] items-start">
+          {/* Left: form */}
+          <ContactForm />
 
-            {/* <div className='contact-container'>
-                <h2 className="sub-header text-4xl font-bold tracking-tight sm:text-4xl">We'd love to hear from you.</h2>
-                <hr className='line' />
+          {/* Right: contact details / side card */}
+          <aside className="bg-[#0b0d10] text-[#f5f0e5] rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.6)] border border-[#262933] p-6 sm:p-7 lg:p-8">
+            <h2 className="mma-logo-font text-2xl sm:text-3xl font-bold tracking-wide">
+              The Butterfly Movement
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
+              We work with young people, schools, community organisations and
+              partners across Tower Hamlets and beyond.
+            </p>
 
-                <div className='section-container'>
-                    <div className='email'>
-                        <div className='email-icon'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671"></path>
-                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791"></path>
-                            </svg>
-                        </div>
-                        <div className='section-text'>
-                            <h3 className='contact-section-email text-xl font-bold tracking-tight sm:text-xl'>Email</h3>
-                            <p>info@thebutterflymovement.health</p>    
-                        </div>  
-                    </div>
-                    
+            <div className="mt-6 space-y-4 text-sm sm:text-base">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#f5b400]">
+                  Email
+                </p>
+                <a
+                  href="mailto:info@thebutterflymovement.health"
+                  className="mt-1 inline-flex items-center text-[#f5f0e5] hover:text-[#f5b400] transition-colors"
+                >
+                  info@thebutterflymovement.health
+                </a>
+              </div>
 
-                    <div className='mobile'>
-                        <div className='mobile-icon'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"></path>
-                            </svg>
-                        </div>
-                        <div className='section-text'>
-                            <h3 className='contact-section-mobile text-xl font-bold tracking-tight sm:text-xl'>Mobile</h3>
-                            <p>07715 316840</p>    
-                        </div>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#f5b400]">
+                  Phone / WhatsApp
+                </p>
+                <a
+                  href="tel:07715316840"
+                  className="mt-1 inline-flex items-center text-[#f5f0e5] hover:text-[#f5b400] transition-colors"
+                >
+                  07715 316840
+                </a>
+              </div>
 
-                    </div>
-                </div>
-            </div> */}
-            
+              <div>
+                <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#f5b400]">
+                  Typical Response
+                </p>
+                <p className="mt-1 text-slate-200">
+                  We usually respond within 2–3 working days. For safeguarding
+                  or urgent matters, please call directly.
+                </p>
+              </div>
+            </div>
 
-            <ContactForm />
-            
-        </>
-    )
-}
+            <div className="mt-6 border-t border-[#262933] pt-4 text-xs text-slate-400 space-y-2">
+              <p>
+                By submitting the form, you agree that we may use your details
+                to respond to your enquiry. Your information is handled
+                securely and never shared without consent.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+  );
+};
 
 export default Contact;

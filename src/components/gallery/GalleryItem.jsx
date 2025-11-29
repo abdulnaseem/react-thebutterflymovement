@@ -1,34 +1,35 @@
 import { useState } from 'react';
 
-const GalleryItem = ({ id, url, setImageId, projectUrl, onClick }) => {
-    const [isLoading, setIsLoading] = useState(true);
+const GalleryItem = ({ id, url, onClick }) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-    return (
-        <div
-            onClick={() => onClick(id)}
-            className="block overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-        >
-            {/* Skeleton Loader */}
-            {isLoading && (
-                <div role="status" className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-                    <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded-sm sm:w-96 dark:bg-gray-300">
-                        <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                        </svg>
-                    </div>
-                </div>
-            )}
+  return (
+    <button
+      type="button"
+      onClick={() => onClick(id)}
+      className="group block w-full overflow-hidden rounded-2xl bg-[#181a1f] border border-[#1b1d22] shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5b400]"
+    >
+      {/* Skeleton */}
+      {isLoading && (
+        <div className="w-full h-40 sm:h-48 bg-[#111827] animate-pulse" />
+      )}
 
-            {/* Image */}
-            <img
-                src={url}
-                alt=""
-                className={`w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300 ${isLoading ? 'hidden' : 'block'}`}
-                onLoad={() => setIsLoading(false)}
-                onError={() => setIsLoading(false)}
-            />
-        </div>
-    );
+      {/* Image */}
+      <div className={`relative ${isLoading ? 'hidden' : 'block'}`}>
+        <img
+          src={url}
+          alt="Training at Brawlers Boxing"
+          className="w-full h-40 sm:h-48 object-cover transform group-hover:scale-105 transition-transform duration-300"
+          onLoad={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <span className="pointer-events-none absolute bottom-2 right-2 text-[0.65rem] px-2 py-1 rounded-full bg-black/70 text-[#f5f0e5] uppercase tracking-wide">
+          View
+        </span>
+      </div>
+    </button>
+  );
 };
 
 export default GalleryItem;
