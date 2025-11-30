@@ -6,6 +6,8 @@ import BBLogo from '../../assets/images/brawlers-boxing.jpeg';
 import BBNewSession from '../../assets/images/bb-new-session.jpeg';
 import SelectedImage from '../../components/gallery/image/SelectedImage';
 import MmaClassGrid from '../../components/classes/MmaClassGrid';
+import CUBSImage from '../../assets/images/cubs.jpg'
+import TIGERSImage from '../../assets/images/tigers.jpg'
 
 const brawlersClasses = [
   {
@@ -16,7 +18,7 @@ const brawlersClasses = [
     level: 'Ages 5-10',
     location: 'Osmani Community Centre, E1 5AW',
     coach: 'Coach H & Team',
-    imageUrl: BBNewSession,
+    imageUrl: CUBSImage,
   },
   {
     id: 'tigers-early',
@@ -26,7 +28,7 @@ const brawlersClasses = [
     level: 'Ages 11-17',
     location: 'Osmani Community Centre, E1 5AW',
     coach: 'Coach H & Team',
-    imageUrl: 'https://via.placeholder.com/600x400?text=Tigers+Class',
+    imageUrl: TIGERSImage,
   },
 ];
 
