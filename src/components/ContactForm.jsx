@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // must be v2 Checkbox key
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // v2 Checkbox key
 
 const initialState = {
   name: "",
@@ -18,9 +18,6 @@ const ContactForm = () => {
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const recaptchaRef = useRef(null);
 
-  /* ------------------------------
-      HANDLE INPUT CHANGE
-  ------------------------------- */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -29,9 +26,6 @@ const ContactForm = () => {
     }));
   };
 
-  /* ------------------------------
-      VALIDATION
-  ------------------------------- */
   const validateForm = () => {
     const trimmed = {
       name: formData.name.trim(),
@@ -49,24 +43,23 @@ const ContactForm = () => {
     if (!trimmed.email) {
       newErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(trimmed.email)) {
-      newErrors.email = "Please enter a valid email.";
+      newErrors.email = "Please enter a valid email address.";
     }
 
     if (!trimmed.contactNumber) {
       newErrors.contactNumber = "Contact number is required.";
     } else if (!/^\d{10,15}$/.test(trimmed.contactNumber)) {
-      newErrors.contactNumber = "Contact number must be 10–15 digits.";
+      newErrors.contactNumber = "Contact number should contain 10–15 digits.";
     }
 
-    if (!trimmed.message) newErrors.message = "Message cannot be empty.";
+    if (!trimmed.message) newErrors.message = "Message is required.";
 
     if (!recaptchaToken) {
-      newErrors.recaptcha = "Please verify that you are not a robot.";
+      newErrors.recaptcha = "Please confirm you are not a robot.";
     }
 
     setErrors(newErrors);
 
-    // If no validation errors, normalise form data
     if (Object.keys(newErrors).length === 0) {
       setFormData((prev) => ({
         ...prev,
@@ -79,25 +72,21 @@ const ContactForm = () => {
     return false;
   };
 
-  /* ------------------------------
-      SUBMIT HANDLER
-  ------------------------------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
+
     setIsLoading(true);
 
     try {
       const response = await fetch(
-        // Local testing:
-        "http://localhost:5000/send-email",
-        // Production:
-        // "https://node-thebutterflymovement.vercel.app/send-email",
+        "https://node-thebutterflymovement.vercel.app/send-email",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             ...formData,
@@ -113,11 +102,15 @@ const ContactForm = () => {
         setRecaptchaToken("");
         recaptchaRef.current?.reset();
       } else {
-        const err = await response.json().catch(() => ({}));
-        alert(err.message || "Failed to send message. Please try again.");
+        const errorData = await response.json().catch(() => ({}));
+        alert(
+          `Failed to send the message: ${
+            errorData.message || "Please try again."
+          }`
+        );
       }
-    } catch (err) {
-      console.error("Error:", err);
+    } catch (error) {
+      console.error("Error:", error);
       alert("An error occurred. Please try again.");
       recaptchaRef.current?.reset();
       setRecaptchaToken("");
@@ -126,95 +119,181 @@ const ContactForm = () => {
     }
   };
 
-  /* ------------------------------
-      COMPONENT JSX
-  ------------------------------- */
   return (
     <section
-      aria-labelledby="contact-heading"
-      className="bg-[#fdfaf3] rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)] border border-[#e2d6bf] p-6 sm:p-8 max-w-2xl mx-auto"
+      aria-labelledby="contact-form-heading"
+      className="bg-[#fdfaf3] rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)] border border-[#e2d6bf] p-6 sm:p-8"
     >
-      <h2
-        id="contact-heading"
-        className="mma-logo-font text-3xl font-bold text-[#0b0d10] mb-4 text-center sm:text-left"
+      <div className="mb-6 text-center sm:text-left">
+        <h2
+          id="contact-form-heading"
+          className="mma-logo-font text-2xl sm:text-3xl font-bold tracking-wide text-[#0b0d10]"
+        >
+          Send us a message
+        </h2>
+        <p className="mt-2 text-sm sm:text-base text-slate-700">
+          Fill in the form below and we’ll reply as soon as possible.
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5"
+        noValidate
+        aria-describedby={
+          Object.keys(errors).length ? "form-error-summary" : undefined
+        }
       >
-        Send us a message
-      </h2>
-
-      <p className="text-slate-700 mb-6 text-center sm:text-left">
-        Fill in the form below and we’ll reply as soon as possible.
-      </p>
-
-      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-        {/* NAME */}
+        {/* Name */}
         <div>
-          <label className="form-label">Name *</label>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Name <span className="text-red-600 font-bold ml-0.5">*</span>
+          </label>
           <input
-            name="name"
             type="text"
+            id="name"
+            name="name"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
-            className="form-input"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="Enter your full name"
+            required
           />
-          {errors.name && <p className="form-error">{errors.name}</p>}
-        </div>
-
-        {/* SUBJECT */}
-        <div>
-          <label className="form-label">Subject *</label>
-          <input
-            name="subject"
-            type="text"
-            value={formData.subject}
-            onChange={handleChange}
-            className="form-input"
-          />
-          {errors.subject && <p className="form-error">{errors.subject}</p>}
-        </div>
-
-        {/* EMAIL */}
-        <div>
-          <label className="form-label">Email *</label>
-          <input
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="form-input"
-          />
-          {errors.email && <p className="form-error">{errors.email}</p>}
-        </div>
-
-        {/* CONTACT NUMBER */}
-        <div>
-          <label className="form-label">Contact Number *</label>
-          <input
-            name="contactNumber"
-            type="tel"
-            value={formData.contactNumber}
-            onChange={handleChange}
-            className="form-input"
-          />
-          {errors.contactNumber && (
-            <p className="form-error">{errors.contactNumber}</p>
+          {errors.name && (
+            <p id="name-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.name}
+            </p>
           )}
         </div>
 
-        {/* MESSAGE */}
+        {/* Subject */}
         <div>
-          <label className="form-label">Message *</label>
-          <textarea
-            name="message"
-            rows={4}
-            value={formData.message}
+          <label
+            htmlFor="subject"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Subject <span className="text-red-600 font-bold ml-0.5">*</span>
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
             onChange={handleChange}
-            className="form-input"
+            aria-invalid={!!errors.subject}
+            aria-describedby={errors.subject ? "subject-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="How can we help?"
+            required
           />
-          {errors.message && <p className="form-error">{errors.message}</p>}
+          {errors.subject && (
+            <p
+              id="subject-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.subject}
+            </p>
+          )}
         </div>
 
-        {/* RECAPTCHA */}
-        <div className="mt-5 flex justify-center">
+        {/* Email */}
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Email <span className="text-red-600 font-bold ml-0.5">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autoComplete="email"
+            value={formData.email}
+            onChange={handleChange}
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="name@example.com"
+            required
+          />
+          {errors.email && (
+            <p id="email-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.email}
+            </p>
+          )}
+        </div>
+
+        {/* Contact Number */}
+        <div>
+          <label
+            htmlFor="contactNumber"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Contact number <span className="text-red-600 font-bold ml-0.5">*</span>
+          </label>
+          <input
+            type="tel"
+            id="contactNumber"
+            name="contactNumber"
+            autoComplete="tel"
+            value={formData.contactNumber}
+            onChange={handleChange}
+            aria-invalid={!!errors.contactNumber}
+            aria-describedby={
+              errors.contactNumber ? "contactNumber-error" : undefined
+            }
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400]"
+            placeholder="Include country code if outside the UK"
+            required
+          />
+          {errors.contactNumber && (
+            <p
+              id="contactNumber-error"
+              className="mt-1 text-xs text-red-600"
+              role="alert"
+            >
+              {errors.contactNumber}
+            </p>
+          )}
+        </div>
+
+        {/* Message */}
+        <div>
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-[#0b0d10]"
+          >
+            Message <span className="text-red-600 font-bold ml-0.5">*</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            aria-invalid={!!errors.message}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className="mt-1 block w-full rounded-md border border-[#d8cbb2] bg-[#fdfaf3] px-4 py-2 text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:border-[#f5b400] resize-y"
+            placeholder="Tell us a little about your enquiry…"
+            required
+          />
+          {errors.message && (
+            <p id="message-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.message}
+            </p>
+          )}
+        </div>
+
+        {/* reCAPTCHA */}
+        <div className="mt-4 flex justify-center">
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={SITE_KEY}
@@ -232,47 +311,20 @@ const ContactForm = () => {
           />
         </div>
         {errors.recaptcha && (
-          <p className="form-error text-center mt-2">{errors.recaptcha}</p>
+          <p className="text-center text-xs text-red-600 mt-1">
+            {errors.recaptcha}
+          </p>
         )}
 
-        {/* SUBMIT BUTTON */}
+        {/* Submit */}
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full rounded-full bg-[#0b0d10] text-[#fdfaf3] py-3 font-semibold hover:bg-black transition disabled:opacity-50"
+          className="w-full inline-flex items-center justify-center rounded-full bg-[#0b0d10] px-6 py-2.5 text-sm sm:text-base font-semibold text-[#f5f0e5] hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#f5b400] focus:ring-offset-2 focus:ring-offset-[#fdfaf3] disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {isLoading ? "Sending…" : "Send Message"}
+          {isLoading ? "Sending…" : "Send message"}
         </button>
       </form>
-
-      {/* Inline Styles for simplicity */}
-      <style>{`
-        .form-label {
-          display:block;
-          font-size:0.9rem;
-          font-weight:600;
-          color:#0b0d10;
-          margin-bottom:4px;
-        }
-        .form-input {
-          width:100%;
-          padding:10px 14px;
-          background:#fdfaf3;
-          border:1px solid #d8cbb2;
-          border-radius:8px;
-          outline:none;
-          transition:0.2s;
-        }
-        .form-input:focus {
-          border-color:#f5b400;
-          box-shadow:0 0 0 2px rgba(245,180,0,0.3);
-        }
-        .form-error {
-          color:#d00;
-          font-size:0.8rem;
-          margin-top:4px;
-        }
-      `}</style>
     </section>
   );
 };
