@@ -214,19 +214,6 @@ const CoachHistoryTimeline = ({ items = coachHTimelineData }) => {
       className="bg-[#0b0d10] text-[#f5f0e5] py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-5xl mx-auto">
-        <header className="text-center mb-10 sm:mb-12">
-          <h2
-            id="coach-h-history-heading"
-            className="text-3xl sm:text-4xl font-extrabold tracking-tight"
-          >
-            Coach H’s Journey
-          </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base text-slate-300">
-            A timeline of community work, youth engagement, and combat sports
-            initiatives rooted in Shadwell, Tower Hamlets.
-          </p>
-        </header>
-
         <ol
           className="relative mt-4 md:mt-8"
           aria-label="Timeline of Coach H’s community contributions and founding work"
