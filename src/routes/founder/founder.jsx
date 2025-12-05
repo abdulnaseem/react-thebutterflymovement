@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CoachHistoryTimeline, { coachHTimelineData } from '../../components/timeline/CoachHistoryTimeline';
 import './founder.css';
 import Hannan from '../../assets/images/hanan.jpeg';
 import { FaInstagram, FaLinkedin, FaTrophy, FaGraduationCap, FaRunning, FaHeart, FaUsers, FaAward } from "react-icons/fa";
+import { HiOutlineLightBulb } from "react-icons/hi";
 import Project1 from '../../assets/images/boxing-banner.jpg';
 import Project2 from '../../assets/images/tgh7.jpg';
 import { styled } from 'styled-components';
@@ -10,8 +12,11 @@ import Card from '../../components/card/Card';
 import { Link } from 'react-router-dom';
 import SportingAchievements from '../../components/card/SportingAchievements';
 import SectionCard from '../../components/card/SectionCard';
+import Button from '../../components/UI/button/button';
 
 const Founder = () => {
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -243,7 +248,7 @@ const Founder = () => {
                                         Award-winning community boxing club using sport as a tool for youth engagement and personal transformation
                                     </p>
                                     <div className="mt-4 inline-flex items-center gap-2 text-[#f5b400] font-semibold group-hover:gap-3 transition-all duration-300">
-                                        Explore Project <FaRunning />
+                                        Explore Project <HiOutlineLightBulb size={22} />
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +270,7 @@ const Founder = () => {
                                         Premier grappling academy fostering discipline, respect, and community through Brazilian Jiu-Jitsu
                                     </p>
                                     <div className="mt-4 inline-flex items-center gap-2 text-[#f5b400] font-semibold group-hover:gap-3 transition-all duration-300">
-                                        Explore Project <FaRunning />
+                                        Explore Project <HiOutlineLightBulb size={22} />
                                     </div>
                                 </div>
                             </div>
@@ -360,12 +365,12 @@ const Founder = () => {
                         Join Coach.H and our community in creating positive change through movement and mentorship
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link
-                            to="/contact"
-                            className="bg-[#f5b400] text-[#0b0d10] hover:bg-[#e6a500] font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105"
+                        <Button
+                            className="bg-[#f5b400] text-[#0b0d10] hover:bg-[#e6a500] font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105"
+                            onClick={() => navigate('/contact')}
                         >
                             Get Involved Today
-                        </Link>
+                        </Button>
                         {/* <Link
                             to="/programs"
                             className="border-2 border-[#f5b400] text-[#f5b400] hover:bg-[#f5b400] hover:text-[#0b0d10] font-semibold px-8 py-4 rounded-lg transition-all duration-300"

@@ -39,7 +39,7 @@ const achievements = [
     title: "IBJJF European No-Gi Champion",
     description: "Ranked #1 in Europe in the 61.5kg blue belt division, demonstrating technical excellence in Brazilian Jiu-Jitsu.",
     stats: "#1 in Europe • 61.5kg • Blue Belt",
-    category: "bjj",
+    category: "bjjblue",
     year: "2023",
     highlight: true
   },
@@ -49,18 +49,19 @@ const achievements = [
     title: "British No-Gi Champion",
     description: "Achieved #1 ranking in Britain in the 67.5kg purple belt division, marking continued excellence in competitive grappling.",
     stats: "#1 in Britain • 67.5kg • Purple Belt",
-    category: "bjj",
+    category: "bjjpurple",
     year: "2024",
     highlight: true
   },
   {
     id: 5,
-    icon: Globe,
-    title: "International Competitor",
-    description: "Consistently competes at national and international levels, representing British martial arts on the global stage.",
-    stats: "Multiple International Events • Team GB Representation",
-    category: "international",
-    year: "2024"
+    icon: Trophy,
+    title: "IBJJF European No-Gi Champion",
+    description: "Ranked #1 in Europe in the purple belt division, showcasing top-level performance at the 2025 IBJJF No-Gi European Championship.",
+    stats: "#1 in Europe • Purple Belt",
+    category: "bjjpurple",
+    year: "2025",
+    highlight: true
   }
 ];
 
@@ -68,16 +69,16 @@ const categoryColors = {
   endurance: "from-orange-500 to-amber-500",
   pilgrimage: "from-emerald-500 to-teal-500", 
   boxing: "from-red-500 to-rose-500",
-  bjj: "from-blue-500 to-indigo-500",
-  international: "from-purple-500 to-violet-500"
+  bjjblue: "from-blue-500 to-indigo-500",
+  bjjpurple: "from-purple-500 to-violet-500"
 };
 
 const categoryIcons = {
   endurance: Bike,
   pilgrimage: Footprints,
   boxing: BellElectric,
-  bjj: Trophy,
-  international: Globe
+  bjjblue: Trophy,
+  bjjpurple: Globe
 };
 
 const SportingAchievements = () => {
@@ -160,24 +161,21 @@ const SportingAchievements = () => {
                     <CardTitle className="text-lg font-bold text-[#f5f0e5] group-hover:text-[#f5b400] transition-colors duration-300 line-clamp-2">
                       {achievement.title}
                     </CardTitle>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="inline-flex items-center gap-1 bg-[#1b1d22] text-slate-400 text-xs px-2 py-1 rounded-full">
-                        <CategoryIcon className="w-3 h-3" />
-                        {achievement.category}
-                      </span>
-                      <span className="text-xs text-slate-500 bg-[#1b1d22] px-2 py-1 rounded-full">
-                        {achievement.year}
-                      </span>
-                      {achievement.highlight && (
-                        <span className="inline-flex items-center gap-1 bg-[#f5b400]/20 text-[#f5b400] text-xs px-2 py-1 rounded-full">
-                          <Award className="w-3 h-3" />
-                          Highlight
-                        </span>
-                      )}
-                    </div>
+
                   </div>
+                  
                 </CardHeader>
 
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="inline-flex items-center gap-1 bg-[#1b1d22] text-slate-400 text-xs px-2 py-1 rounded-full">
+                    <CategoryIcon className="w-3 h-3" />
+                    {achievement.category}
+                  </span>
+                  <span className="text-xs text-slate-500 bg-[#1b1d22] px-2 py-1 rounded-full">
+                    {achievement.year}
+                  </span>
+                </div>
+                
                 {/* Content */}
                 <CardContent className="relative pt-4">
                   <p className="text-slate-300 leading-relaxed mb-3">
