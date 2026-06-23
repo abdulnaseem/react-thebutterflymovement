@@ -174,7 +174,7 @@ const BrawlersBoxing = ({ setImageId }) => {
             <button
               onClick={() =>
                 window.open(
-                  'https://docs.google.com/forms/d/1uzpysqh8pQORWbX40b3IOs5yJLXLxT55z0OIVIvQJ2s',
+                  'https://signup.thebutterflymovement.health/',
                   '_blank'
                 )
               }

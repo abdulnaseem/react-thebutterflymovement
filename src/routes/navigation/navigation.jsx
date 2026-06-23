@@ -13,7 +13,7 @@ const NAV_ITEMS = [
     label: "Clubs",
     children: [
       { id: "brawlers", label: "Brawlers Boxing", to: "/brawlers-boxing" },
-      { id: "grapple", label: "The Grapple Hub", to: "/the-grapple-hub" },
+      // { id: "grapple", label: "The Grapple Hub", to: "/the-grapple-hub" },
     ],
   },
 //   { id: "contact", label: "Contact", to: "/contact" },
