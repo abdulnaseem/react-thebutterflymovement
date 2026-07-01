@@ -88,7 +88,7 @@ const Founder = () => {
     return (
         <>  
             {/* Founder Hero Section */}
-            <div className="relative bg-gradient-to-br from-[#0b0d10] to-[#0f1115] text-[#f5f0e5] py-16 px-5 sm:px-10 lg:px-20">
+            <div className="relative bg-gradient-to-br from-[#0b0d10] to-[#0f1115] text-[#f5f0e5] py-16 px-5 sm:px-10 lg:px-20 pt-28">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(245,180,0,0.15),_transparent_50%)]" />
                 
                 <div className="relative max-w-6xl mx-auto">

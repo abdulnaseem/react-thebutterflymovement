@@ -113,7 +113,7 @@ const About = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen pt-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Page header */}
         <header className="text-center mb-10 sm:mb-14">
