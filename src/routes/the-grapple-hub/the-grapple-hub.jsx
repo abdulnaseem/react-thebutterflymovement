@@ -122,10 +122,10 @@ const TheGrappleHub = ({ setImageId }) => {
           {/* Story */}
           <div className="w-full lg:w-2/3">
             <h1 className="mma-logo-font text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-[#f5f0e5]">
-              The Grapple Hub
+              Grappling
             </h1>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed">
-              The Grapple Hub was founded as a sister project to Brawlers
+              This club was founded as a sister project to Brawlers
               Boxing, creating a space dedicated to Brazilian Jiu Jitsu and
               grappling arts rooted in community, discipline and respect.
             </p>
@@ -151,7 +151,7 @@ const TheGrappleHub = ({ setImageId }) => {
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-8 sm:mb-10">
             <h2 className="mma-logo-font text-3xl md:text-4xl font-bold tracking-wide">
-              Inside The Grapple Hub
+              Inside Grappling
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-sm sm:text-base text-slate-300">
               Moments from the mats - drilling, rolling, and connecting through
