@@ -252,7 +252,7 @@ const Grappling = ({ setImageId }) => {
 
               <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base">
                 A dedicated workshop celebrating grappling, motivation and community
-                engagement, featuring Paddy Pimblett and Tinie Tempah.
+                engagement, featuring Arnold Allen, Tinie Tempah & Paddy Pimblett.
               </p>
 
               <div className="mt-8 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl">
@@ -265,8 +265,9 @@ const Grappling = ({ setImageId }) => {
               </div>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <WorkshopGuest name="Paddy Pimblett" role="UFC Athlete" />
+                <WorkshopGuest name="Arnold Allen" role="UFC Athlete" />
                 <WorkshopGuest name="Tinie Tempah" role="Artist & Entrepreneur" />
+                <WorkshopGuest name="Paddy Pimblett" role="UFC Athlete" />
               </div>
 
               <a
