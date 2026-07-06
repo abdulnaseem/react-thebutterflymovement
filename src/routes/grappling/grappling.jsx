@@ -31,7 +31,7 @@ const benefits = [
 
 const workshopHighlights = [
   'UFC-inspired workshop experience',
-  'Special guest feature with Paddy Pimblett',
+  'Special guest feature with Paddy Pimblett & Arnold Allen',
   'Community engagement with Tinie Tempah',
   'Motivation, discipline and positive role models',
 ];
