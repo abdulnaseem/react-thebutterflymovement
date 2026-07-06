@@ -254,7 +254,7 @@ const Founder = () => {
                             </div>
                         </Link>
 
-                        <Link to="/the-grapple-hub" className="group">
+                        <Link to="/grappling" className="group">
                             <div 
                                 className="relative h-80 rounded-2xl overflow-hidden shadow-2xl transform group-hover:scale-[1.02] transition duration-500"
                                 style={project2Style}
@@ -265,7 +265,7 @@ const Founder = () => {
                                         <div className="w-8 h-1 bg-[#f5b400]"></div>
                                         <span className="text-[#f5b400] font-semibold text-sm">MARTIAL ARTS</span>
                                     </div>
-                                    <h3 className="text-3xl font-bold text-white mb-2">The Grapple Hub</h3>
+                                    <h3 className="text-3xl font-bold text-white mb-2">Grappling</h3>
                                     <p className="text-slate-200">
                                         Premier grappling academy fostering discipline, respect, and community through Brazilian Jiu-Jitsu
                                     </p>

@@ -1,7 +1,7 @@
 // src/components/navigation/Navigation.jsx
 import { useEffect, useCallback, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { HiOutlineMenu, HiOutlineX, HiChevronDown } from "react-icons/hi";
 import LogoImage from "../../assets/images/logo.png";
 
 const SIGNUP_URL = "https://signup.thebutterflymovement.health/signup";
@@ -9,20 +9,30 @@ const SIGNUP_URL = "https://signup.thebutterflymovement.health/signup";
 const NAV_ITEMS = [
   { id: "home", label: "Home", to: "/" },
   { id: "story", label: "Our Story", to: "/about" },
-  { id: "brawlers", label: "Brawlers Boxing", to: "/brawlers-boxing" },
+  {
+    id: "programmes",
+    label: "Programmes",
+    children: [
+      { id: "brawlers", label: "Brawlers Boxing", to: "/brawlers-boxing" },
+      { id: "grappling", label: "Grappling", to: "/grappling" },
+    ],
+  },
   { id: "founder", label: "Founder", to: "/founder" },
   { id: "contact", label: "Contact", to: "/contact" },
 ];
 
 const Navigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [programmesOpen, setProgrammesOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const location = useLocation();
 
   const isHome = location.pathname === "/";
   const desktopTransparent = isHome && !hasScrolled && !mobileOpen;
 
-  const closeMobile = useCallback(() => setMobileOpen(false), []);
+  const closeMobile = useCallback(() => {
+    setMobileOpen(false);
+  }, []);
 
   useEffect(() => {
     closeMobile();
@@ -43,12 +53,19 @@ const Navigation = () => {
     };
   }, [mobileOpen]);
 
+  const programmesActive =
+    location.pathname === "/brawlers-boxing" || location.pathname === "/grappling";
+
   return (
     <header
       className={`
         fixed inset-x-0 top-0 z-50 transition-all duration-300
         bg-black shadow-xl shadow-black/30 backdrop-blur-xl
-        ${desktopTransparent ? "lg:bg-transparent lg:shadow-none lg:backdrop-blur-0" : "lg:bg-black/90"}
+        ${
+          desktopTransparent
+            ? "lg:bg-transparent lg:shadow-none lg:backdrop-blur-0"
+            : "lg:bg-black/90"
+        }
       `}
     >
       <nav
@@ -69,21 +86,76 @@ const Navigation = () => {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 lg:flex xl:gap-2">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.id}
-              to={item.to}
-              className={({ isActive }) =>
-                `rounded-full px-3 py-2 text-xs font-black uppercase tracking-[0.12em] transition xl:px-4 xl:text-sm ${
-                  isActive
-                    ? "bg-white text-black"
-                    : "text-white/85 hover:bg-white/10 hover:text-white"
-                }`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            if (item.children) {
+              return (
+                <div key={item.id} className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setProgrammesOpen((prev) => !prev)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") setProgrammesOpen(false);
+                    }}
+                    aria-haspopup="menu"
+                    aria-expanded={programmesOpen}
+                    className={`inline-flex items-center rounded-full px-3 py-2 text-xs font-black uppercase tracking-[0.12em] transition xl:px-4 xl:text-sm ${
+                      programmesActive
+                        ? "bg-white text-black"
+                        : "text-white/85 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    <HiChevronDown
+                      className={`ml-1 h-4 w-4 transition-transform ${
+                        programmesOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {programmesOpen && (
+                    <div
+                      role="menu"
+                      className="absolute left-0 top-full z-50 mt-3 min-w-[230px] rounded-2xl border border-white/10 bg-black/95 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl"
+                    >
+                      {item.children.map((child) => (
+                        <NavLink
+                          key={child.id}
+                          to={child.to}
+                          role="menuitem"
+                          onClick={() => setProgrammesOpen(false)}
+                          className={({ isActive }) =>
+                            `block rounded-xl px-4 py-3 text-sm font-black uppercase tracking-[0.1em] transition ${
+                              isActive
+                                ? "bg-[#f5b400] text-black"
+                                : "text-white/85 hover:bg-white/10 hover:text-white"
+                            }`
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <NavLink
+                key={item.id}
+                to={item.to}
+                className={({ isActive }) =>
+                  `rounded-full px-3 py-2 text-xs font-black uppercase tracking-[0.12em] transition xl:px-4 xl:text-sm ${
+                    isActive
+                      ? "bg-white text-black"
+                      : "text-white/85 hover:bg-white/10 hover:text-white"
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            );
+          })}
 
           <a
             href={SIGNUP_URL}
@@ -102,11 +174,7 @@ const Navigation = () => {
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
         >
-          {mobileOpen ? (
-            <HiOutlineX className="h-6 w-6" />
-          ) : (
-            <HiOutlineMenu className="h-6 w-6" />
-          )}
+          {mobileOpen ? <HiOutlineX className="h-6 w-6" /> : <HiOutlineMenu className="h-6 w-6" />}
         </button>
       </nav>
 
@@ -114,13 +182,9 @@ const Navigation = () => {
       <div
         id="mobile-navigation"
         className={`
-          lg:hidden
-          fixed left-0 right-0 top-[72px] z-50
-          h-[calc(100svh-72px)]
-          bg-black
-          px-4 py-5
-          shadow-2xl shadow-black
-          transition-all duration-300
+          lg:hidden fixed left-0 right-0 top-[72px] z-50
+          h-[calc(100svh-72px)] bg-black px-4 py-5
+          shadow-2xl shadow-black transition-all duration-300
           sm:top-[80px] sm:h-[calc(100svh-80px)]
           ${
             mobileOpen
@@ -131,23 +195,74 @@ const Navigation = () => {
       >
         <nav aria-label="Mobile navigation">
           <ul className="space-y-3">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <NavLink
-                  to={item.to}
-                  onClick={closeMobile}
-                  className={({ isActive }) =>
-                    `block rounded-2xl px-5 py-4 text-base font-black uppercase tracking-[0.12em] transition sm:text-lg ${
-                      isActive
-                        ? "bg-white text-black"
-                        : "bg-[#111111] text-white hover:bg-[#1b1b1b]"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              if (item.children) {
+                return (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() => setProgrammesOpen((prev) => !prev)}
+                      aria-expanded={programmesOpen}
+                      aria-controls="mobile-programmes-menu"
+                      className={`flex w-full items-center justify-between rounded-2xl px-5 py-4 text-base font-black uppercase tracking-[0.12em] transition sm:text-lg ${
+                        programmesActive
+                          ? "bg-white text-black"
+                          : "bg-[#111111] text-white hover:bg-[#1b1b1b]"
+                      }`}
+                    >
+                      {item.label}
+                      <HiChevronDown
+                        className={`h-5 w-5 transition-transform ${
+                          programmesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <div
+                      id="mobile-programmes-menu"
+                      className={`mt-3 space-y-2 overflow-hidden transition-all ${
+                        programmesOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {item.children.map((child) => (
+                        <NavLink
+                          key={child.id}
+                          to={child.to}
+                          onClick={closeMobile}
+                          className={({ isActive }) =>
+                            `block rounded-2xl px-6 py-4 text-sm font-black uppercase tracking-[0.12em] transition sm:text-base ${
+                              isActive
+                                ? "bg-[#f5b400] text-black"
+                                : "bg-[#181818] text-white/85 hover:bg-[#222222]"
+                            }`
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={item.id}>
+                  <NavLink
+                    to={item.to}
+                    onClick={closeMobile}
+                    className={({ isActive }) =>
+                      `block rounded-2xl px-5 py-4 text-base font-black uppercase tracking-[0.12em] transition sm:text-lg ${
+                        isActive
+                          ? "bg-white text-black"
+                          : "bg-[#111111] text-white hover:bg-[#1b1b1b]"
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              );
+            })}
 
             <li className="pt-4">
               <a
