@@ -5,6 +5,7 @@ import Butterfly from '../../assets/images/butterfly1.jpeg';
 import MuhammadAli from '../../assets/images/muhammad-ali.jpeg';
 import ButterflyGuard from '../../assets/images/butterfly-guard.jpeg';
 import Button from '../../components/UI/button/button';
+import SEO from '../../components/SEO';
 
 const storySections = [
   {
@@ -113,112 +114,120 @@ const About = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Page header */}
-        <header className="text-center mb-10 sm:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-            About
-          </p>
-          <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
-            Small Movements, Big Change
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-gray-600 leading-relaxed">
-            The Butterfly Movement brings together education, combat sports, and
-            community work to unlock potential in young people and adults across
-            Shadwell, Tower Hamlets and beyond.
-          </p>
-        </header>
-
-        {/* Story sections */}
-        <section aria-label="Origins and inspirations" className="space-y-12 sm:space-y-16">
-          {storySections.map((section, index) => {
-            const isEven = index % 2 === 0;
-
-            return (
-              <div
-                key={section.id}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-              >
-                {/* Image */}
-                <div
-                  className={`
-                    w-full
-                    ${!isEven ? 'lg:order-2' : ''}
-                  `}
-                >
-                  <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                    <img
-                      src={section.image}
-                      alt={section.imageAlt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-
-                {/* Text */}
-                <div className={`${!isEven ? 'lg:order-1' : ''}`}>
-                  <div className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 mb-3">
-                    {section.badge}
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
-                    {section.title}
-                  </h2>
-                  <div className="mt-4 space-y-3 text-sm sm:text-base text-gray-700 leading-relaxed">
-                    {section.body.map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </section>
-
-        {/* Values & beliefs */}
-        <section
-          aria-labelledby="values-heading"
-          className="mt-14 sm:mt-16 border-t border-gray-200 pt-10 sm:pt-12"
-        >
-          <div className="text-center max-w-3xl mx-auto">
-            <h2
-              id="values-heading"
-              className="text-2xl sm:text-3xl font-semibold text-gray-900"
-            >
-              Values &amp; Beliefs
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
-              Our values shape every session, conversation, and decision.
-              Together, they form the acronym{' '}
-              <span className="font-semibold text-gray-900">B.U.T.T.E.R</span>,
-              reflecting how we aim to support growth, resilience, and
-              long-lasting change.
+    <>
+      <SEO
+        title="About The Butterfly Movement | Youth Empowerment & Community Change"
+        description="Learn about The Butterfly Movement, our story, values and mission to support young people through education, combat sports and community work."
+        path="/about"
+      />
+    
+      <div className="bg-white min-h-screen pt-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          {/* Page header */}
+          <header className="text-center mb-10 sm:mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+              About
             </p>
-          </div>
+            <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+              Small Movements, Big Change
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-gray-600 leading-relaxed">
+              The Butterfly Movement brings together education, combat sports, and
+              community work to unlock potential in young people and adults across
+              Shadwell, Tower Hamlets and beyond.
+            </p>
+          </header>
 
-          <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {valuesData.map((value) => (
-              <ValueCard
-                key={value.id}
-                iconLetter={value.iconLetter}
-                header={value.header}
-                text={value.text}
-              />
-            ))}
-          </div>
+          {/* Story sections */}
+          <section aria-label="Origins and inspirations" className="space-y-12 sm:space-y-16">
+            {storySections.map((section, index) => {
+              const isEven = index % 2 === 0;
 
-          <div className="mt-10 flex justify-center">
-            <Button
-              onClick={handleNavigate}
-              className="px-8 py-3 text-sm sm:text-base rounded-full bg-gray-900 text-white hover:bg-gray-800 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              FLY WITH US
-            </Button>
-          </div>
-        </section>
+              return (
+                <div
+                  key={section.id}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+                >
+                  {/* Image */}
+                  <div
+                    className={`
+                      w-full
+                      ${!isEven ? 'lg:order-2' : ''}
+                    `}
+                  >
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                      <img
+                        src={section.image}
+                        alt={section.imageAlt}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Text */}
+                  <div className={`${!isEven ? 'lg:order-1' : ''}`}>
+                    <div className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 mb-3">
+                      {section.badge}
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+                      {section.title}
+                    </h2>
+                    <div className="mt-4 space-y-3 text-sm sm:text-base text-gray-700 leading-relaxed">
+                      {section.body.map((paragraph, i) => (
+                        <p key={i}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+
+          {/* Values & beliefs */}
+          <section
+            aria-labelledby="values-heading"
+            className="mt-14 sm:mt-16 border-t border-gray-200 pt-10 sm:pt-12"
+          >
+            <div className="text-center max-w-3xl mx-auto">
+              <h2
+                id="values-heading"
+                className="text-2xl sm:text-3xl font-semibold text-gray-900"
+              >
+                Values &amp; Beliefs
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
+                Our values shape every session, conversation, and decision.
+                Together, they form the acronym{' '}
+                <span className="font-semibold text-gray-900">B.U.T.T.E.R</span>,
+                reflecting how we aim to support growth, resilience, and
+                long-lasting change.
+              </p>
+            </div>
+
+            <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {valuesData.map((value) => (
+                <ValueCard
+                  key={value.id}
+                  iconLetter={value.iconLetter}
+                  header={value.header}
+                  text={value.text}
+                />
+              ))}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <Button
+                onClick={handleNavigate}
+                className="px-8 py-3 text-sm sm:text-base rounded-full bg-gray-900 text-white hover:bg-gray-800 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
+                FLY WITH US
+              </Button>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

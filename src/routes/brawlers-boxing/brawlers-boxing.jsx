@@ -17,6 +17,7 @@ import BBNewSession from "../../assets/images/bb-new-session.jpeg";
 import SelectedImage from "../../components/gallery/image/SelectedImage";
 import CUBSImage from "../../assets/images/cubs.jpg";
 import TIGERSImage from "../../assets/images/tigers.jpg";
+import SEO from '../../components/SEO';
 
 const SIGNUP_URL = "https://signup.thebutterflymovement.health/signup";
 
@@ -96,339 +97,347 @@ const BrawlersBoxing = ({ setImageId }) => {
   };
 
   return (
-    <main className="min-h-screen bg-[#070707] text-white">
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-black pt-24">
-        {/* <img
-          src={BBNewSession}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
-        /> */}
+    <>
+      <SEO
+        title="Brawlers Boxing | Youth Boxing Programme in Tower Hamlets"
+        description="Brawlers Boxing is The Butterfly Movement's youth boxing programme for children aged 5 to 17, building confidence, discipline and fitness."
+        path="/brawlers-boxing"
+        image="/logo.png"
+      />
+      <main className="min-h-screen bg-[#070707] text-white">
+        {/* HERO */}
+        <section className="relative isolate overflow-hidden bg-black pt-24">
+          {/* <img
+            src={BBNewSession}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-35"
+          /> */}
 
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/20" />
-        <div className="absolute left-0 top-0 hidden h-full w-2 bg-[#2f8f2f] sm:block" />
-        <div className="absolute -right-40 top-24 h-80 w-80 rounded-full bg-[#f5b400]/10 blur-3xl md:h-[520px] md:w-[520px]" />
+          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/20" />
+          <div className="absolute left-0 top-0 hidden h-full w-2 bg-[#2f8f2f] sm:block" />
+          <div className="absolute -right-40 top-24 h-80 w-80 rounded-full bg-[#f5b400]/10 blur-3xl md:h-[520px] md:w-[520px]" />
 
-        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-24">
-          <div className="order-2 lg:order-1">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-[#f5b400] sm:text-sm sm:tracking-[0.4em]">
-              The Butterfly Movement Presents
-            </p>
+          <div className="relative z-10 mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-24">
+            <div className="order-2 lg:order-1">
+              <p className="text-xs font-black uppercase tracking-[0.28em] text-[#f5b400] sm:text-sm sm:tracking-[0.4em]">
+                The Butterfly Movement Presents
+              </p>
 
-            <h1 className="mt-5 text-[clamp(3rem,13vw,7rem)] font-black uppercase leading-[0.86] tracking-tight">
-              Brawlers
-              <span className="block text-[#2f8f2f]">Boxing</span>
-            </h1>
+              <h1 className="mt-5 text-[clamp(3rem,13vw,7rem)] font-black uppercase leading-[0.86] tracking-tight">
+                Brawlers
+                <span className="block text-[#2f8f2f]">Boxing</span>
+              </h1>
 
-            <p className="mt-6 max-w-2xl text-base font-semibold uppercase tracking-wide text-white sm:text-lg">
-              Building confidence. Building champions. Building futures.
-            </p>
+              <p className="mt-6 max-w-2xl text-base font-semibold uppercase tracking-wide text-white sm:text-lg">
+                Building confidence. Building champions. Building futures.
+              </p>
 
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base md:text-lg">
-              Structured youth boxing sessions based at Vallance Road, serving young people across 
-              Tower Hamlets and beyond through technical training, discipline and positive 
-              mentorship in a safe community environment.
-            </p>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base md:text-lg">
+                Structured youth boxing sessions based at Vallance Road, serving young people across 
+                Tower Hamlets and beyond through technical training, discipline and positive 
+                mentorship in a safe community environment.
+              </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href={SIGNUP_URL}
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:px-8 sm:text-sm"
-              >
-                Register Now
-                <FaArrowRight className="ml-3 shrink-0" />
-              </a>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href={SIGNUP_URL}
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:px-8 sm:text-sm"
+                >
+                  Register Now
+                  <FaArrowRight className="ml-3 shrink-0" />
+                </a>
 
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("classes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-[#2f8f2f] hover:bg-[#2f8f2f] sm:px-8 sm:text-sm"
-              >
-                View Classes
-              </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    document
+                      .getElementById("classes")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 py-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-[#2f8f2f] hover:bg-[#2f8f2f] sm:px-8 sm:text-sm"
+                >
+                  View Classes
+                </button>
+              </div>
+
+              <div className="mt-10 grid gap-3 text-sm text-white/70 sm:grid-cols-3">
+                <HeroStat label="Established" value="2013" />
+                <HeroStat label="Founded in" value="Shadwell" />
+                <HeroStat label="Age Groups" value="5-17" />
+              </div>
             </div>
 
-            <div className="mt-10 grid gap-3 text-sm text-white/70 sm:grid-cols-3">
-              <HeroStat label="Established" value="2013" />
-              <HeroStat label="Founded in" value="Shadwell" />
-              <HeroStat label="Age Groups" value="5-17" />
+            <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+                <div className="absolute -inset-4 rounded-full bg-[#f5b400]/10 blur-2xl" />
+
+                <div className="relative mx-auto flex aspect-square max-w-[280px] items-center justify-center overflow-hidden rounded-full border-4 border-[#f5b400] bg-white shadow-2xl sm:max-w-[340px] md:max-w-[390px]">
+                  <img
+                    src={BBLogo}
+                    alt="Brawlers Boxing logo"
+                    className="h-[68%] w-[68%] object-contain"
+                  />
+                </div>
+
+                <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 mt-8 text-center backdrop-blur-sm">
+                  <p className="text-sm font-black uppercase tracking-[0.3em] text-[#f5b400]">
+                    SINCE 2013
+                  </p>
+
+                  <p className="mt-2 text-xl font-bold text-white">
+                    Vallance Road
+                  </p>
+
+                  <p className="mt-1 text-sm text-white/60">
+                    Founded in Shadwell, now proudly training from Vallance Road.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
-              <div className="absolute -inset-4 rounded-full bg-[#f5b400]/10 blur-2xl" />
+        {/* INTRO STORY */}
+        <section className="bg-[#0b0d10] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Our Story
+              </p>
 
-              <div className="relative mx-auto flex aspect-square max-w-[280px] items-center justify-center overflow-hidden rounded-full border-4 border-[#f5b400] bg-white shadow-2xl sm:max-w-[340px] md:max-w-[390px]">
-                <img
-                  src={BBLogo}
-                  alt="Brawlers Boxing logo"
-                  className="h-[68%] w-[68%] object-contain"
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                Born From Community. Built Through Boxing.
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
+              <p>
+                Born in the aftermath of London 2012, Brawlers Boxing was founded
+                by Coach H to harness the power of boxing for community change.
+              </p>
+
+              <p>
+                The project emerged to tackle youth delinquency and promote
+                physical participation and better health. Along the way, the club
+                has transformed lives and earned recognition including the{" "}
+                <strong className="font-bold text-white">
+                  Tower Hamlets Community Safety Awards
+                </strong>{" "}
+                and a finalist place in{" "}
+                <strong className="font-bold text-white">
+                  The English Asian Business Awards
+                </strong>{" "}
+                by Lloyds Bank.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CLASSES */}
+        <section
+          id="classes"
+          className="bg-black px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+        >
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl sm:mb-14">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Boxing Classes
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl lg:text-6xl">
+                Choose Your Session
+              </h2>
+
+              <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
+                Saturday classes are split by age group so every young person can
+                train safely, progress confidently and feel part of the team.
+              </p>
+            </div>
+
+            <div className="grid gap-5 lg:grid-cols-2">
+              {brawlersClasses.map((item) => (
+                <ClassCard key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SUMMER TERM / SIGNUP */}
+        <section className="bg-[#0b0d10] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-3xl border border-[#2f8f2f]/40 bg-[#071007] p-5 shadow-2xl sm:p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
+            <div className="min-w-0">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Summer Term 2026
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                Registration Open
+              </h2>
+
+              <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base">
+                Join the next Brawlers Boxing term at Osmani Trust. Limited
+                places are available for each age group.
+              </p>
+
+              <a
+                href={SIGNUP_URL}
+                className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:w-auto sm:px-8 sm:text-sm"
+              >
+                Sign Up Now
+                <FaArrowRight className="ml-3 shrink-0" />
+              </a>
+            </div>
+
+            <div className="grid min-w-0 gap-4">
+              <InfoCard
+                icon={<FaCalendarAlt />}
+                title="Dates"
+                main="Saturday 4th July 2026"
+                sub="to Saturday 26th September 2026"
+              />
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <InfoCard
+                  icon={<FaUsers />}
+                  title="Cubs"
+                  main="Ages 5-10"
+                  sub="12:45pm - 1:45pm"
+                  green
+                />
+                <InfoCard
+                  icon={<FaUsers />}
+                  title="Tigers"
+                  main="Ages 11-17"
+                  sub="1:45pm - 2:45pm"
+                  gold
                 />
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 mt-8 text-center backdrop-blur-sm">
-                <p className="text-sm font-black uppercase tracking-[0.3em] text-[#f5b400]">
-                  SINCE 2013
-                </p>
+              <InfoCard
+                icon={<FaMapMarkerAlt />}
+                title="Venue"
+                main="Osmani Trust"
+                sub="58 Underwood Road, London E1 5AW"
+              />
+            </div>
+          </div>
+        </section>
 
-                <p className="mt-2 text-xl font-bold text-white">
-                  Vallance Road
-                </p>
+        {/* BENEFITS */}
+        <section className="bg-black px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                What Young People Gain
+              </p>
 
-                <p className="mt-1 text-sm text-white/60">
-                  Founded in Shadwell, now proudly training from Vallance Road.
-                </p>
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                More Than Punches
+              </h2>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {benefits.map((benefit) => (
+                <div
+                  key={benefit}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-white/75"
+                >
+                  <FaCheckCircle className="mt-1 shrink-0 text-[#f5b400]" />
+                  <span className="text-sm leading-6 sm:text-base">
+                    {benefit}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PROMO IMAGE */}
+        <section className="bg-[#0f1115] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#181a1f] shadow-2xl">
+              <img
+                src={BBNewSession}
+                alt="Brawlers Boxing session information"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Join The Movement
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                Learn to Box in a Positive Environment
+              </h2>
+
+              <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
+                Brawlers Boxing runs Saturday classes split by age and level, led
+                by experienced coaches who prioritise safety, confidence and
+                long-term development.
+              </p>
+
+              <div className="mt-8 grid gap-3 text-sm text-white/70 sm:grid-cols-2">
+                <MiniDetail icon={<FaClock />} text="Saturday sessions" />
+                <MiniDetail icon={<FaShieldAlt />} text="Safe environment" />
+                <MiniDetail icon={<FaMapMarkerAlt />} text="Osmani Trust" />
+                <MiniDetail icon={<FaUsers />} text="Ages 5-17" />
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* INTRO STORY */}
-      <section className="bg-[#0b0d10] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              Our Story
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-              Born From Community. Built Through Boxing.
-            </h2>
-          </div>
-
-          <div className="space-y-5 text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
-            <p>
-              Born in the aftermath of London 2012, Brawlers Boxing was founded
-              by Coach H to harness the power of boxing for community change.
-            </p>
-
-            <p>
-              The project emerged to tackle youth delinquency and promote
-              physical participation and better health. Along the way, the club
-              has transformed lives and earned recognition including the{" "}
-              <strong className="font-bold text-white">
-                Tower Hamlets Community Safety Awards
-              </strong>{" "}
-              and a finalist place in{" "}
-              <strong className="font-bold text-white">
-                The English Asian Business Awards
-              </strong>{" "}
-              by Lloyds Bank.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CLASSES */}
-      <section
-        id="classes"
-        className="bg-black px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl sm:mb-14">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              Boxing Classes
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl lg:text-6xl">
-              Choose Your Session
-            </h2>
-
-            <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
-              Saturday classes are split by age group so every young person can
-              train safely, progress confidently and feel part of the team.
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-2">
-            {brawlersClasses.map((item) => (
-              <ClassCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SUMMER TERM / SIGNUP */}
-      <section className="bg-[#0b0d10] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-3xl border border-[#2f8f2f]/40 bg-[#071007] p-5 shadow-2xl sm:p-7 md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
-          <div className="min-w-0">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              Summer Term 2026
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-              Registration Open
-            </h2>
-
-            <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base">
-              Join the next Brawlers Boxing term at Osmani Trust. Limited
-              places are available for each age group.
-            </p>
-
-            <a
-              href={SIGNUP_URL}
-              className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:w-auto sm:px-8 sm:text-sm"
-            >
-              Sign Up Now
-              <FaArrowRight className="ml-3 shrink-0" />
-            </a>
-          </div>
-
-          <div className="grid min-w-0 gap-4">
-            <InfoCard
-              icon={<FaCalendarAlt />}
-              title="Dates"
-              main="Saturday 4th July 2026"
-              sub="to Saturday 26th September 2026"
-            />
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <InfoCard
-                icon={<FaUsers />}
-                title="Cubs"
-                main="Ages 5-10"
-                sub="12:45pm - 1:45pm"
-                green
-              />
-              <InfoCard
-                icon={<FaUsers />}
-                title="Tigers"
-                main="Ages 11-17"
-                sub="1:45pm - 2:45pm"
-                gold
-              />
-            </div>
-
-            <InfoCard
-              icon={<FaMapMarkerAlt />}
-              title="Venue"
-              main="Osmani Trust"
-              sub="58 Underwood Road, London E1 5AW"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* BENEFITS */}
-      <section className="bg-black px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              What Young People Gain
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-              More Than Punches
-            </h2>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit}
-                className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-white/75"
+              <a
+                href={SIGNUP_URL}
+                className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:w-auto sm:px-8 sm:text-sm"
               >
-                <FaCheckCircle className="mt-1 shrink-0 text-[#f5b400]" />
-                <span className="text-sm leading-6 sm:text-base">
-                  {benefit}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROMO IMAGE */}
-      <section className="bg-[#0f1115] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#181a1f] shadow-2xl">
-            <img
-              src={BBNewSession}
-              alt="Brawlers Boxing session information"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              Join The Movement
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-              Learn to Box in a Positive Environment
-            </h2>
-
-            <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
-              Brawlers Boxing runs Saturday classes split by age and level, led
-              by experienced coaches who prioritise safety, confidence and
-              long-term development.
-            </p>
-
-            <div className="mt-8 grid gap-3 text-sm text-white/70 sm:grid-cols-2">
-              <MiniDetail icon={<FaClock />} text="Saturday sessions" />
-              <MiniDetail icon={<FaShieldAlt />} text="Safe environment" />
-              <MiniDetail icon={<FaMapMarkerAlt />} text="Osmani Trust" />
-              <MiniDetail icon={<FaUsers />} text="Ages 5-17" />
+                Register Now
+              </a>
             </div>
-
-            <a
-              href={SIGNUP_URL}
-              className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#f5b400] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22] sm:w-auto sm:px-8 sm:text-sm"
-            >
-              Register Now
-            </a>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* GALLERY */}
-      <section className="bg-[#0b0d10] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <header className="mb-10 text-center sm:mb-12">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-              Gallery
-            </p>
+        {/* GALLERY */}
+        <section className="bg-[#0b0d10] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+            <header className="mb-10 text-center sm:mb-12">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Gallery
+              </p>
 
-            <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-              Inside Brawlers Boxing
-            </h2>
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                Inside Brawlers Boxing
+              </h2>
 
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-              A look at the training environment, community spirit and moments
-              that define the Brawlers experience.
-            </p>
-          </header>
+              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+                A look at the training environment, community spirit and moments
+                that define the Brawlers experience.
+              </p>
+            </header>
 
-          <div className="overflow-hidden">
-            <Gallery
-              data={DATA}
-              setImageId={setImageId}
-              projectUrl={location.pathname}
-              onImageClick={handleImageClick}
-            />
+            <div className="overflow-hidden">
+              <Gallery
+                data={DATA}
+                setImageId={setImageId}
+                projectUrl={location.pathname}
+                onImageClick={handleImageClick}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {selectedImageObj && (
-        <SelectedImage
-          imageUrl={selectedImageObj.url}
-          previous={handlePrevious}
-          next={handleNext}
-          projectUrl={location.pathname}
-          onClose={closeModal}
-        />
-      )}
-    </main>
+        {selectedImageObj && (
+          <SelectedImage
+            imageUrl={selectedImageObj.url}
+            previous={handlePrevious}
+            next={handleNext}
+            projectUrl={location.pathname}
+            onClose={closeModal}
+          />
+        )}
+      </main>
+    </>
   );
 };
 
