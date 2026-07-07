@@ -17,8 +17,12 @@ import TGHLogo from '../../assets/images/tgh-logo.jpg';
 import SelectedImage from '../../components/gallery/image/SelectedImage';
 import SEO from '../../components/SEO';
 import GrapplingGuests from '../../assets/images/grappling-guests.jpeg';
+import WorkshopData from "../../data/ufc-workshop";
+import JakeHadley from "../../assets/images/jake-hadley.webp";
+import AmirWorkshop from "../../data/amir-al-bazi-workshop";
 
 const SIGNUP_URL = 'https://signup.thebutterflymovement.health/signup';
+const JAKE_HADLEY_POST = 'https://www.instagram.com/p/CpyXkxXtzB-/?igsh=NjB6M3puODJveG82&img_index=1';
 
 const benefits = [
   'Confidence through control',
@@ -38,50 +42,63 @@ const workshopHighlights = [
 
 const Grappling = ({ setImageId }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeGallery, setActiveGallery] = useState(DATA);
   const location = useLocation();
-
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  
   const selectedImageObj = useMemo(() => {
     if (selectedImage == null) return null;
-    return DATA.images.find((img) => img.id === selectedImage);
-  }, [selectedImage]);
-
-  const handleImageClick = (id) => {
+  
+    return activeGallery.images.find((img) => img.id === selectedImage);
+  }, [selectedImage, activeGallery]);
+  
+  const handleImageClick = (id, gallery = DATA) => {
+    setActiveGallery(gallery);
     setSelectedImage(id);
   };
-
+  
   const closeModal = () => {
     setSelectedImage(null);
   };
-
+  
   const handlePrevious = () => {
     setSelectedImage((prev) => {
-      const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+      const currentIndex = activeGallery.images.findIndex(
+        (img) => img.id === prev,
+      );
+  
       const newIndex =
-        currentIndex === 0 ? DATA.images.length - 1 : currentIndex - 1;
-
-      return DATA.images[newIndex].id;
+        currentIndex === 0
+          ? activeGallery.images.length - 1
+          : currentIndex - 1;
+  
+      return activeGallery.images[newIndex].id;
     });
   };
-
+  
   const handleNext = () => {
     setSelectedImage((prev) => {
-      const currentIndex = DATA.images.findIndex((img) => img.id === prev);
+      const currentIndex = activeGallery.images.findIndex(
+        (img) => img.id === prev,
+      );
+  
       const newIndex =
-        currentIndex === DATA.images.length - 1 ? 0 : currentIndex + 1;
-
-      return DATA.images[newIndex].id;
+        currentIndex === activeGallery.images.length - 1
+          ? 0
+          : currentIndex + 1;
+  
+      return activeGallery.images[newIndex].id;
     });
   };
 
   return (
     <>
       <SEO
-        title="Grappling | Brazilian Jiu Jitsu & Grappling in Tower Hamlets"
-        description="Grappling is The Butterfly Movement's Brazilian Jiu Jitsu and grappling programme, helping children and adults build confidence, resilience and self-defence skills."
+        title="Brazilian Jiu Jitsu in Tower Hamlets | Grappling | The Butterfly Movement"
+        description="Learn Brazilian Jiu Jitsu and Grappling with The Butterfly Movement in Tower Hamlets. Community-led training for children, young people and adults featuring workshops with UFC athletes and experienced BJJ coaches."
         path="/grappling"
         image="/logo.png"
       />
@@ -295,6 +312,133 @@ const Grappling = ({ setImageId }) => {
           </div>
         </section>
 
+        {/* UFC WORKSHOP GALLERY */}
+        <section className="bg-black py-20 px-5 md:px-10">
+          <div className="max-w-7xl mx-auto">
+
+            <div className="mb-10 text-center">
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                Workshop Gallery
+              </p>
+
+              <h2 className="mt-4 text-4xl font-black uppercase">
+                UFC Community Workshop
+              </h2>
+
+              <p className="mt-4 max-w-2xl mx-auto text-white/70">
+                Highlights from our UFC Community Workshop featuring Arnold Allen,
+                Paddy Pimblett and Tinie Tempah alongside young people from the local
+                community.
+              </p>
+            </div>
+
+            <Gallery
+              data={WorkshopData}
+              setImageId={setImageId}
+              projectUrl={location.pathname}
+              onImageClick={(id) => handleImageClick(id, WorkshopData)}
+            />
+
+          </div>
+        </section>
+
+        {/* AMIR AL BAZI SEMINAR */}
+        <section className="bg-[#0b0d10] py-20 px-5 md:px-10">
+          <div className="max-w-7xl mx-auto">
+
+            <div className="mb-10 text-center">
+
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                Guest Seminar
+              </p>
+
+              <h2 className="mt-4 text-4xl font-black uppercase">
+                UFC Flyweight Amir Al Bazi
+              </h2>
+
+              <p className="mt-5 max-w-3xl mx-auto text-white/70 leading-8">
+                Our Grappling programme welcomed UFC flyweight contender
+                <strong className="text-white"> Amir Al Bazi</strong> for an exclusive
+                Brazilian Jiu-Jitsu seminar, giving members the opportunity to train
+                with one of the world's elite mixed martial artists and gain insight
+                into high-level professional preparation.
+              </p>
+
+            </div>
+
+            <Gallery
+              data={AmirWorkshop}
+              setImageId={setImageId}
+              projectUrl={location.pathname}
+              onImageClick={(id) => handleImageClick(id, AmirWorkshop)}
+            />
+
+          </div>
+        </section>
+
+        {/* PROFESSIONAL TRAINING */}
+        <section className="bg-black px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1fr]">
+
+            <div className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+              <img
+                src={JakeHadley}
+                alt="UFC athlete Jake Hadley training at The Grapple Hub"
+                className="w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                High-Level Training
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                UFC Athletes Train With Us
+              </h2>
+
+              <p className="mt-6 text-base leading-8 text-white/70">
+                Grappling has welcomed elite martial artists including
+                UFC flyweight Jake Hadley ahead of UFC London. Working alongside
+                legendary Brazilian Jiu-Jitsu coach Bradley Hill, these sessions
+                demonstrate the high technical standards and professional training
+                environment available within our community.
+              </p>
+
+              <div className="mt-8 space-y-4">
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                    Featured Athlete
+                  </p>
+
+                  <p className="mt-2 text-lg font-bold">
+                    Jake Hadley
+                  </p>
+
+                  <p className="mt-2 text-white/60">
+                    Training alongside Coach Bradley Hill at Grappling
+                    before UFC London.
+                  </p>
+                </div>
+
+              </div>
+
+              <a
+                href={JAKE_HADLEY_POST}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center rounded-full bg-[#f5b400] px-8 py-4 text-sm font-black uppercase tracking-[0.12em] text-black transition hover:scale-105 hover:bg-[#ffcc22]"
+              >
+                View Instagram Post
+                <FaArrowRight className="ml-3" />
+              </a>
+            </div>
+
+          </div>
+        </section>
+
         {/* GALLERY */}
         <section className="bg-[#0b0d10] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-7xl">
@@ -304,7 +448,7 @@ const Grappling = ({ setImageId }) => {
               </p>
 
               <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
-                Inside The Grapple Hub
+                Inside Grappling
               </h2>
 
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
@@ -317,7 +461,7 @@ const Grappling = ({ setImageId }) => {
               data={DATA}
               setImageId={setImageId}
               projectUrl={location.pathname}
-              onImageClick={handleImageClick}
+              onImageClick={(id) => handleImageClick(id, DATA)}
             />
           </div>
         </section>

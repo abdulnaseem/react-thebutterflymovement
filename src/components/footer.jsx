@@ -57,10 +57,10 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/the-grapple-hub"
+                  href="/grappling"
                   className="hover:text-[#f5b400] transition-colors"
                 >
-                  The Grapple Hub
+                  Grappling
                 </a>
               </li>
             </ul>

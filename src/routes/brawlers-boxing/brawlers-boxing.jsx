@@ -18,6 +18,8 @@ import SelectedImage from "../../components/gallery/image/SelectedImage";
 import CUBSImage from "../../assets/images/cubs.jpg";
 import TIGERSImage from "../../assets/images/tigers.jpg";
 import SEO from '../../components/SEO';
+import SteelWarrior from "../../assets/images/steel-warrior.jpeg";
+import BrawlersBoxingPoster5 from "../../assets/images/brawlers-boxing-poster-5.jpg";
 
 const SIGNUP_URL = "https://signup.thebutterflymovement.health/signup";
 
@@ -235,6 +237,44 @@ const BrawlersBoxing = ({ setImageId }) => {
           </div>
         </section>
 
+        {/* STEEL WARRIOR CAMPAIGN */}
+        <section className="bg-black px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_1fr]">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#181a1f] shadow-2xl">
+              <img
+                src={SteelWarrior}
+                alt="Brawlers Boxing supporting the STEEL Warrior reducing knife crime campaign"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
+                Community Impact
+              </p>
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">
+                STEEL Warrior Campaign
+              </h2>
+
+              <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
+                Brawlers Boxing has supported the STEEL Warrior reducing knife crime
+                campaign, using sport, discipline and positive role models to help
+                guide young people away from violence and towards confidence, purpose
+                and community.
+              </p>
+
+              <div className="mt-8 grid gap-3 text-sm text-white/70 sm:grid-cols-2">
+                <MiniDetail icon={<FaShieldAlt />} text="Reducing knife crime" />
+                <MiniDetail icon={<FaUsers />} text="Youth engagement" />
+                <MiniDetail icon={<FaCheckCircle />} text="Positive role models" />
+                <MiniDetail icon={<FaMapMarkerAlt />} text="Community outreach" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CLASSES */}
         <section
           id="classes"
@@ -359,7 +399,7 @@ const BrawlersBoxing = ({ setImageId }) => {
           <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#181a1f] shadow-2xl">
               <img
-                src={BBNewSession}
+                src={BrawlersBoxingPoster5}
                 alt="Brawlers Boxing session information"
                 className="h-full w-full object-cover"
                 loading="lazy"
