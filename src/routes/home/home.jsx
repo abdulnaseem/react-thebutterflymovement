@@ -100,6 +100,7 @@ const coachingTeam = [
       "PE Teacher",
       "QTS",
       "PGCE",
+      "BA Hons Physical Education",
       "Youth Worker",
       "Knowledge is Power",
     ],
