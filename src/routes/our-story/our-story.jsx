@@ -102,7 +102,7 @@ const ValueCard = ({ iconLetter, header, text }) => (
   </article>
 );
 
-const About = () => {
+const OurStory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const About = () => {
           {/* Page header */}
           <header className="text-center mb-10 sm:mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-              About
+              Our Story
             </p>
             <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
               Small Movements, Big Change
@@ -231,4 +231,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default OurStory;

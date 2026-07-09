@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './routes/navigation/navigation';
 import Home from './routes/home/home';
-import About from './routes/about/about';
+import OurStory from './routes/our-story/our-story';
 import Founder from './routes/founder/founder';
 import BrawlersBoxing from './routes/brawlers-boxing/brawlers-boxing';
 import Grappling from './routes/grappling/grappling';
 import Contact from './routes/contact/contact';
+import Team from './routes/team/team';
 import Footer from './components/footer';
 import BBDATA from './data/brawlers-boxing.json';
 import TGHDATA from './data/the-grapple-hub.json';
@@ -29,8 +30,9 @@ function App() {
         {/* <PopupModal /> */}
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/our-story" element={<OurStory />} />
           <Route path='/founder' element={<Founder />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/brawlers-boxing" element={<BrawlersBoxing setImageId={handleSetImageId} />} />
           <Route path="/brawlers-boxing/:imageId" element={<Image id={imageId} data={BBDATA} projectUrl={projectUrl} />} />
           <Route path="/grappling" element={<Grappling setImageId={handleSetImageId} />} />
