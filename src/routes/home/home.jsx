@@ -77,10 +77,10 @@ const leadershipTeam = [
     badges: ["Founder", "Head Coach", "Youth Mentor", "Community Leader"],
   },
   {
-    name: "Abdul Naseem Khan",
+    name: "Abdul Khan",
     role: "Director of Technology & Operations",
     text: "Leads technology, digital strategy and operational systems across The Butterfly Movement. A Qualified Computing Teacher and former Software Engineer, Abdul oversees the organisation's digital infrastructure, programme operations and technology strategy.",
-    badges: ["QTS", "Computing Teacher", "Former Software Engineer", "Operations"],
+    badges: ["Computing Teacher", "QTS", "PGCE", "Former Software Engineer", "Operations", "BSc Computer Science"],
   },
 ];
 
@@ -92,10 +92,17 @@ const coachingTeam = [
     badges: ["Lead Coach", "Youth Work", "Mentoring"],
   },
   {
-    name: "Fahimul Hoque",
+    name: "Muhammed Hoque",
     role: "Assistant Coach",
-    text: "Supports participants during sessions, encouraging teamwork, discipline and continuous improvement in a positive and structured environment.",
-    badges: ["Assistant Coach", "Teamwork", "Discipline"],
+    text: "Muhammed is a qualified Level 1 Boxing Coach, PE Teacher and Youth Worker who has supported The Butterfly Movement since the very beginning. Drawing on his experience as a former amateur boxer and educator, he helps young people develop confidence, resilience and discipline through structured boxing sessions, believing that the lessons learned in sport can be carried into everyday life.",
+    badges: [
+      "Boxing Coach",
+      "PE Teacher",
+      "QTS",
+      "PGCE",
+      "Youth Worker",
+      "Knowledge is Power",
+    ],
   },
   {
     name: "Emon",
