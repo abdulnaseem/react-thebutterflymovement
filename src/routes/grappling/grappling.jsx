@@ -444,7 +444,7 @@ const Grappling = ({ setImageId }) => {
           <div className="mx-auto max-w-7xl">
             <header className="mb-10 text-center sm:mb-12">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
-                Gallery
+                Life on the Mats
               </p>
 
               <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl">

@@ -1,7 +1,23 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
+
+
 
 const Footer = () => {
+
+  const socialLinks = [
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/company/the-butterfly-movement/",
+      label: "LinkedIn",
+    },
+    {
+      icon: FaInstagram,
+      href: "https://www.instagram.com/thebutterflymovement.health/",
+      label: "Instagram",
+    },
+  ];
+
   return (
     <footer className="bg-[#0b0d10] text-[#f5f0e5] py-14 border-t border-[#1b1d22]">
       <div className="max-w-7xl mx-auto px-6">
@@ -94,12 +110,15 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-[#f5b400] mb-4 tracking-wide">
               Follow Us
             </h3>
-            <div className="flex space-x-5">
-              {[FaFacebook, FaTwitter, FaInstagram, FaYoutube].map((Icon, i) => (
+            <div className="flex gap-5">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
-                  className="text-slate-400 hover:text-[#f5b400] transition-all"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:text-[#f5b400]"
                 >
                   <Icon size={26} />
                 </a>

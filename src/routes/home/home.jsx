@@ -69,32 +69,39 @@ const programmes = [
   },
 ];
 
-const team = [
+const leadershipTeam = [
   {
     name: "Abdul Hannan",
     role: "Founder & Head Coach",
-    text: "Leads the vision of The Butterfly Movement, delivering boxing, grappling and mentoring programmes that build confidence, discipline and positive life skills.",
-    featured: true,
+    text: "Founder of The Butterfly Movement, leading the organisation's vision through boxing, grappling, mentoring and youth development. Abdul is committed to helping young people build confidence, discipline, resilience and positive life skills through structured community programmes.",
+    badges: ["Founder", "Head Coach", "Youth Mentor", "Community Leader"],
   },
+  {
+    name: "Abdul Naseem Khan",
+    role: "Director of Technology & Operations",
+    text: "Leads technology, digital strategy and operational systems across The Butterfly Movement. A Qualified Computing Teacher and former Software Engineer, Abdul oversees the organisation's digital infrastructure, programme operations and technology strategy.",
+    badges: ["QTS", "Computing Teacher", "Former Software Engineer", "Operations"],
+  },
+];
+
+const coachingTeam = [
   {
     name: "Jamee",
     role: "Lead Coach",
-    text: "Jamee leads sessions across The Butterfly Movement and takes responsibility for programmes. With a background in youth work and gang mediation, he brings strong leadership, mentoring and conflict resolution skills, creating a safe and supportive environment for every participant."
+    text: "Jamee leads sessions across The Butterfly Movement and takes responsibility for programme delivery. With a background in youth work and gang mediation, he brings leadership, mentoring and conflict resolution skills.",
+    badges: ["Lead Coach", "Youth Work", "Mentoring"],
   },
   {
-    name: "Naseem",
-    role: "Director of Technology & Operations",
-    text: "Leads technology, digital strategy and operational systems across The Butterfly Movement. Naseem developed the organisation's website, registration platform and administration systems while managing memberships, operations and programme delivery to support the continued growth of the organisation.",
-  },
-  {
-    name: "Fahim",
+    name: "Fahimul Hoque",
     role: "Assistant Coach",
-    text: "Supports participants during sessions, encouraging teamwork, discipline and continuous improvement.",
+    text: "Supports participants during sessions, encouraging teamwork, discipline and continuous improvement in a positive and structured environment.",
+    badges: ["Assistant Coach", "Teamwork", "Discipline"],
   },
   {
     name: "Emon",
     role: "Assistant Coach",
-    text: "Assists in coaching sessions and community activities, helping create an inclusive environment for learning and growth.",
+    text: "Assists in coaching sessions and community activities, helping create an inclusive environment where young people can learn, grow and develop confidence.",
+    badges: ["Assistant Coach", "Community", "Inclusive Support"],
   },
 ];
 
@@ -362,45 +369,112 @@ const Home = () => {
           }`}
         >
           <div className="mx-auto max-w-7xl">
-            <div className="mx-auto mb-10 max-w-3xl text-center">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
               <p className="text-xs font-black uppercase tracking-[0.25em] text-[#f5b400] sm:text-sm">
                 Meet Our Team
               </p>
-              <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl lg:text-6xl">
-                Coaches, Mentors & Professionals
+
+              <h2 className="mt-4 text-3xl font-black uppercase leading-none text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                The People Behind The Movement
               </h2>
+
               <p className="mt-5 text-sm leading-7 text-white/70 sm:text-base md:text-lg">
-                The Butterfly Movement is powered by dedicated coaches, mentors
-                and professionals committed to helping young people grow.
+                Our team combines coaching, mentoring, education, technology and
+                community experience to create safe, structured and positive programmes
+                for young people.
               </p>
             </div>
 
-            <div className="grid gap-5 lg:grid-cols-3">
-              {team.map((member) => (
-                <article
-                  key={member.name}
-                  className={`rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl ${
-                    member.featured ? "lg:col-span-3" : ""
-                  }`}
-                >
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5b400] text-xl font-black text-black">
-                      {member.name.charAt(0)}
+            <div>
+              <h3 className="mb-5 text-sm font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                Leadership
+              </h3>
+
+              <div className="grid gap-5 lg:grid-cols-2">
+                {leadershipTeam.map((member) => (
+                  <article
+                    key={member.name}
+                    className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-[#f5b400]/40"
+                  >
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5b400] text-xl font-black text-black">
+                        {member.name.charAt(0)}
+                      </div>
+
+                      <div>
+                        <h3 className="text-2xl font-black uppercase text-white">
+                          {member.name}
+                        </h3>
+
+                        <p className="mt-1 text-sm font-bold uppercase tracking-wide text-[#f5b400]">
+                          {member.role}
+                        </p>
+
+                        <p className="mt-4 text-sm leading-7 text-white/70 sm:text-base">
+                          {member.text}
+                        </p>
+
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {member.badges.map((badge) => (
+                            <span
+                              key={badge}
+                              className="rounded-full border border-[#f5b400]/30 bg-[#f5b400]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#f5b400]"
+                            >
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-black uppercase text-white">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 text-sm font-bold uppercase tracking-wide text-[#f5b400]">
-                        {member.role}
-                      </p>
-                      <p className="mt-4 text-sm leading-7 text-white/70 sm:text-base">
-                        {member.text}
-                      </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="mb-5 text-sm font-black uppercase tracking-[0.25em] text-[#f5b400]">
+                Coaching & Mentoring Team
+              </h3>
+
+              <div className="grid gap-5 lg:grid-cols-3">
+                {coachingTeam.map((member) => (
+                  <article
+                    key={member.name}
+                    className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-[#f5b400]/40"
+                  >
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start lg:flex-col">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5b400] text-xl font-black text-black">
+                        {member.name.charAt(0)}
+                      </div>
+
+                      <div>
+                        <h3 className="text-2xl font-black uppercase text-white">
+                          {member.name}
+                        </h3>
+
+                        <p className="mt-1 text-sm font-bold uppercase tracking-wide text-[#f5b400]">
+                          {member.role}
+                        </p>
+
+                        <p className="mt-4 text-sm leading-7 text-white/70 sm:text-base">
+                          {member.text}
+                        </p>
+
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {member.badges.map((badge) => (
+                            <span
+                              key={badge}
+                              className="rounded-full border border-[#f5b400]/30 bg-[#f5b400]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#f5b400]"
+                            >
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
