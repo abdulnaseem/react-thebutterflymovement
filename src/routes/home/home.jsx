@@ -80,7 +80,7 @@ const leadershipTeam = [
     name: "Abdul Khan",
     role: "Director of Technology & Operations",
     text: "Leads technology, digital strategy and operational systems across The Butterfly Movement. A Qualified Computing Teacher and former Software Engineer, Abdul oversees the organisation's digital infrastructure, programme operations and technology strategy.",
-    badges: ["Computing Teacher", "QTS", "PGCE", "Former Software Engineer", "Operations", "BSc Computer Science"],
+    badges: ["Computing Teacher", "QTS", "PGCE", "BSc Hons Computer Science (Network Computing)", "Former Software Engineer", "Operations"],
   },
 ];
 
