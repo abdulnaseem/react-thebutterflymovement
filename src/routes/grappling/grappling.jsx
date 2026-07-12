@@ -20,6 +20,7 @@ import GrapplingGuests from '../../assets/images/grappling-guests.jpeg';
 import WorkshopData from "../../data/ufc-workshop";
 import JakeHadley from "../../assets/images/jake-hadley.webp";
 import AmirWorkshop from "../../data/amir-al-bazi-workshop";
+import GrapplingImage from "../../assets/images/grappling-image.jpeg";
 
 const SIGNUP_URL = 'https://signup.thebutterflymovement.health/signup';
 const JAKE_HADLEY_POST = 'https://www.instagram.com/p/CpyXkxXtzB-/?igsh=NjB6M3puODJveG82&img_index=1';
@@ -162,11 +163,11 @@ const Grappling = ({ setImageId }) => {
                 <div className="absolute -inset-4 rounded-full bg-[#f5b400]/10 blur-2xl" />
 
                 <div className="relative mx-auto flex aspect-square max-w-[280px] items-center justify-center overflow-hidden rounded-full border-4 border-[#f5b400] bg-white shadow-2xl sm:max-w-[340px] md:max-w-[390px]">
-                  {/* <img
-                    src={TGHLogo}
+                  <img
+                    src={GrapplingImage}
                     alt="The Grapple Hub logo"
                     className="h-[78%] w-[78%] object-contain"
-                  /> */}
+                  />
                 </div>
 
                 <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 text-center backdrop-blur-sm">
