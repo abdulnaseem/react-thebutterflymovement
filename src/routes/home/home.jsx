@@ -257,7 +257,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* SUMMER TERM */}
+        {/* AUTUMN TERM */}
         <section
           id="summer-term"
           ref={termRef}
@@ -268,7 +268,7 @@ const Home = () => {
           <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-3xl border border-[#2f8f2f]/40 bg-[#071007] p-4 shadow-2xl sm:p-7 md:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:p-12">
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#f5b400] sm:text-sm">
-                Summer Term 2026
+                Autumn Term 2026
               </p>
 
               <h2 className="mt-4 text-3xl font-black uppercase leading-none sm:text-4xl md:text-5xl lg:text-6xl">
@@ -302,8 +302,8 @@ const Home = () => {
               <InfoCard
                 icon={<FaCalendarAlt />}
                 title="Dates"
-                main="Saturday 4th July 2026"
-                sub="to Saturday 26th September 2026"
+                main="Saturday 10th October 2026"
+                sub="to Saturday 26th December 2026"
               />
               <div className="grid gap-4 sm:grid-cols-2">
                 <InfoCard title="Cubs" main="Ages 5-10" sub="12:45pm - 1:45pm" green />
